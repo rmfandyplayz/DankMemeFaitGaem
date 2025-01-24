@@ -1,0 +1,20 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1737740701
+::res://Media/::1737737333
+::res://Media/Sprites/::1737740299
+::res://Media/Sprites/Environment/::1737740701
+Clouds.png::CompressedTexture2D::2224265454056387566::1737740326::1737740336::1::::<><>::
+Grass.jpg::CompressedTexture2D::718713047301034584::1737740696::1737740701::1::::<><>::
+::res://Media/User Interface/::1737737333
+::res://Scenes/::1737737162
+::res://Scripts/::1737737166
+::res://Testing/::1737740682
+Test.tscn::PackedScene::5894206502833085222::1737740682::0::1::::<><>::
+::res://Testing/Test Assets/::1737737898
+icon.svg::CompressedTexture2D::3736859290914812328::1737737150::1737737894::1::::<><>::
+Mossy - BackgroundDecoration.png::CompressedTexture2D::6096997641296328412::1737737662::1737737897::1::::<><>::
+Mossy - Decorations&Hazards.png::CompressedTexture2D::111442048758435472::1737737662::1737737898::1::::<><>::
+Mossy - FloatingPlatforms.png::CompressedTexture2D::3088239296990104614::1737737662::1737737895::1::::<><>::
+Mossy - Hanging Plants.png::CompressedTexture2D::8219786803578626037::1737737662::1737737896::1::::<><>::
+Mossy - MossyHills.png::CompressedTexture2D::5591118059939184090::1737737662::1737737895::1::::<><>::
+Mossy - TileSet.png::CompressedTexture2D::3400913475442584336::1737737662::1737737897::1::::<><>::
