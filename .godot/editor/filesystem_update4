@@ -1,1 +1,4 @@
+res://Scenes/Entities/Player.tscn
+res://Scripts/Player/Player.gd
 res://Testing/Test.tscn
+res://Scenes/Levels/00_Tutorial.tscn

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://couca6ih4wql4"]
+
+[ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_mkxkn"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c6pb2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fq4iy"]
+size = Vector2(160, 160)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_mkxkn")
+
+[node name="Camera" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+drag_left_margin = 0.3
+drag_top_margin = 0.3
+drag_right_margin = 0.3
+drag_bottom_margin = 0.3
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="TempSprite" type="Sprite2D" parent="."]
+scale = Vector2(160, 160)
+texture = SubResource("PlaceholderTexture2D_c6pb2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fq4iy")

@@ -1,15 +1,31 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1737740701
-::res://Media/::1737737333
-::res://Media/Sprites/::1737740299
+::res://::1738169339
+default_bus_layout.tres::AudioBusLayout::5446819712888266413::1737999832::0::1::::<><>::
+::res://Media/::1737999804
+::res://Media/Audio/::1737999813
+::res://Media/Audio/Music/::1737999813
+::res://Media/Audio/SFX/::1737999808
+::res://Media/Sprites/::1738169178
 ::res://Media/Sprites/Environment/::1737740701
 Clouds.png::CompressedTexture2D::2224265454056387566::1737740326::1737740336::1::::<><>::
 Grass.jpg::CompressedTexture2D::718713047301034584::1737740696::1737740701::1::::<><>::
+::res://Media/Sprites/LevelSpecific/::1738169195
+::res://Media/Sprites/LevelSpecific/Level_00_Tutorial/::1738169339
+Background_Carpet.png::CompressedTexture2D::3278047572151295979::1738169231::1738169325::1::::<><>::
+Background_Foreground.png::CompressedTexture2D::458566477702777416::1738169231::1738169334::1::::<><>::
+Background_Walls.png::CompressedTexture2D::3417033108317013059::1738169231::1738169340::1::::<><>::
 ::res://Media/User Interface/::1737737333
-::res://Scenes/::1737737162
-::res://Scripts/::1737737166
-::res://Testing/::1737740682
-Test.tscn::PackedScene::5894206502833085222::1737740682::0::1::::<><>::
+::res://Scenes/::1737999540
+::res://Scenes/Entities/::1738169245
+Player.tscn::PackedScene::5796895808325359027::1738169245::0::1::::<><>::res://Scripts/Player/Player.gd
+::res://Scenes/Environment Elements/::1737999533
+::res://Scenes/Levels/::1737999373
+00_Tutorial.tscn::PackedScene::5601771421701421598::1737999373::0::1::::<><>::
+::res://Scripts/::1737999638
+::res://Scripts/Player/::1738169091
+Player.gd::GDScript::-1::1738169091::0::1::::<>CharacterBody2D<>::
+::res://Testing/::1737998859
+Test.tscn::PackedScene::5894206502833085222::1737998859::0::1::::<><>::
 ::res://Testing/Test Assets/::1737737898
 icon.svg::CompressedTexture2D::3736859290914812328::1737737150::1737737894::1::::<><>::
 Mossy - BackgroundDecoration.png::CompressedTexture2D::6096997641296328412::1737737662::1737737897::1::::<><>::

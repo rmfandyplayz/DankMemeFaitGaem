@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl2smetcd1g5k"]
+
+[ext_resource type="Texture2D" uid="uid://boxibhxjg4pr4" path="res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Walls.png" id="1_457sp"]
+[ext_resource type="PackedScene" uid="uid://couca6ih4wql4" path="res://Scenes/Entities/Player.tscn" id="2_57raj"]
+
+[node name="00Tutorial" type="Node2D"]
+
+[node name="BackgroundWalls" type="Sprite2D" parent="."]
+position = Vector2(-66, 526)
+texture = ExtResource("1_457sp")
+
+[node name="Player" parent="." instance=ExtResource("2_57raj")]
+position = Vector2(-15, 789)
+moveSpeed = 900.0
+acceleration = 2000.0
+friction = 900.0
+burstSpeed = 1700.0
+burstMaxDuration = 1.0
