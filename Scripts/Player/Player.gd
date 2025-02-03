@@ -8,6 +8,8 @@ extends CharacterBody2D
 @export var burstMaxDuration : float # in seconds
 
 @export var playerSprite : AnimatedSprite2D
+@export var minSpriteAnimationSpeed : float = 0.75
+@export var maxSpriteAnimationSpeed : float = 3.0
 
 var burstActive : bool = false
 var burstDirection : Vector2 = Vector2.ZERO
@@ -23,8 +25,18 @@ func _process(delta: float) -> void:
 	# player sprite changes
 	if(velocity == Vector2.ZERO):
 		playerSprite.animation = "idle"
+		playerSprite.speed_scale = 1 # reset animation FPS
 	elif(velocity != Vector2.ZERO and burstActive == false):
 		playerSprite.animation = "walk"
+		var speedFactor = clamp(velocity.length() / moveSpeed, 0, 1) # this is a value between 0 and 1
+		playerSprite.speed_scale = lerp(minSpriteAnimationSpeed, maxSpriteAnimationSpeed, speedFactor) # adjust animation FPS
+		
+		
+		#DEBUG TEST TEST TEST TEST
+		print("Velocity Length: ", velocity.length())
+		print("Velocity Length / MoveSpeed: ", (velocity.length() / moveSpeed))
+		print("Speed Factor: ", speedFactor)
+		print("Speed Scale: ", playerSprite.speed_scale) 
 	
 	# movement and burst
 	if(burstActive == true and velocity != Vector2.ZERO):
@@ -54,6 +66,7 @@ func MovePlayer(inputDirection : Vector2, delta : float):
 
 func StartBurst(direction : Vector2):
 	playerSprite.animation = "boost"
+	playerSprite.speed_scale = 1
 	burstActive = true
 	burstDirection = direction
 	burstTimer = burstMaxDuration
