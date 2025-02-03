@@ -1,7 +1,11 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1738544445
+::res://::1738568528
 default_bus_layout.tres::AudioBusLayout::5446819712888266413::1738541343::0::1::::<><>::
-::res://Media/::1738541343
+::res://Media/::1738554357
+::res://Media/Audio/::1738568272
+::res://Media/Audio/Music/::1738568516
+gasGasGas.mp3::AudioStreamMP3::7410945108828162307::1738568310::1738568516::1::::<><>::
+::res://Media/Audio/SFX/::1738568272
 ::res://Media/Sprites/::1738544428
 ::res://Media/Sprites/Entities/::1738544428
 ::res://Media/Sprites/Entities/Player/::1738544446
@@ -25,16 +29,18 @@ Obstacle_Doge.png::CompressedTexture2D::4688914170987496046::1738544428::1738544
 Obstacle_Dorito.png::CompressedTexture2D::8438447035749217539::1738544428::1738544446::1::::<><>::
 Obstacle_DummyTarget.png::CompressedTexture2D::5004215158206844113::1738544428::1738544445::1::::<><>::
 Obstacle_Illuminati.png::CompressedTexture2D::508534518396236710::1738544428::1738544446::1::::<><>::
+::res://Media/UI/::1738554370
+bootsplash.png::CompressedTexture2D::690618685949593178::1738554370::1738554370::1::::<><>::
 ::res://Scenes/::1738541343
-::res://Scenes/Entities/::1738544477
-Player.tscn::PackedScene::5796895808325359027::1738544477::0::1::::<><>::res://Scripts/Player/Player.gd<>uid://b7kmy4lyq60dx::::res://Media/Sprites/Entities/Player/Boost_01.png<>uid://w4ulkoieu020::::res://Media/Sprites/Entities/Player/Idle_01.png<>uid://bmmktf2ysdn6m::::res://Media/Sprites/Entities/Player/Idle_02.png<>uid://fgx0qbhexwgg::::res://Media/Sprites/Entities/Player/Boost_02.png<>uid://cg448jr2pasoc::::res://Media/Sprites/Entities/Player/Walk_01.png<>uid://cglbk5ne1jsb8::::res://Media/Sprites/Entities/Player/Wak_02.png<>uid://dj1meo7gl633o::::res://Media/Sprites/Entities/Player/Walk_03.png
-::res://Scenes/Levels/::1738544477
-00_Tutorial.tscn::PackedScene::5601771421701421598::1738544477::0::1::::<><>::uid://boxibhxjg4pr4::::res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Walls.png<>uid://couca6ih4wql4::::res://Scenes/Entities/Player.tscn<>uid://bmx572cbdy1k6::::res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Carpet.png
+::res://Scenes/Entities/::1738554417
+Player.tscn::PackedScene::5796895808325359027::1738554417::0::1::::<><>::res://Scripts/Player/Player.gd<>uid://b7kmy4lyq60dx::::res://Media/Sprites/Entities/Player/Boost_01.png<>uid://w4ulkoieu020::::res://Media/Sprites/Entities/Player/Idle_01.png<>uid://bmmktf2ysdn6m::::res://Media/Sprites/Entities/Player/Idle_02.png<>uid://fgx0qbhexwgg::::res://Media/Sprites/Entities/Player/Boost_02.png<>uid://cg448jr2pasoc::::res://Media/Sprites/Entities/Player/Walk_01.png<>uid://cglbk5ne1jsb8::::res://Media/Sprites/Entities/Player/Wak_02.png<>uid://dj1meo7gl633o::::res://Media/Sprites/Entities/Player/Walk_03.png
+::res://Scenes/Levels/::1738568506
+00_Tutorial.tscn::PackedScene::5601771421701421598::1738568506::0::1::::<><>::uid://boxibhxjg4pr4::::res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Walls.png<>uid://couca6ih4wql4::::res://Scenes/Entities/Player.tscn<>uid://bmx572cbdy1k6::::res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Carpet.png
 ::res://Scripts/::1738541343
-::res://Scripts/Player/::1738544428
-Player.gd::GDScript::-1::1738544428::0::1::::<>CharacterBody2D<>::
-::res://Testing/::1738544476
-Test.tscn::PackedScene::5894206502833085222::1738544476::0::1::::<><>::
+::res://Scripts/Player/::1738553195
+Player.gd::GDScript::-1::1738553195::0::1::::<>CharacterBody2D<>::
+::res://Testing/::1738554415
+Test.tscn::PackedScene::5894206502833085222::1738554415::0::1::::<><>::
 ::res://Testing/Test Assets/::1738544448
 icon.svg::CompressedTexture2D::3736859290914812328::1738541343::1738544445::1::::<><>::
 Mossy - BackgroundDecoration.png::CompressedTexture2D::6096997641296328412::1738541343::1738544448::1::::<><>::

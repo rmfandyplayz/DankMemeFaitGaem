@@ -13,6 +13,7 @@ config_version=5
 config/name="dank meme fait gaim"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://Media/UI/bootsplash.png"
 config/icon="res://Testing/Test Assets/icon.svg"
 
 [display]
@@ -30,6 +31,7 @@ project/assembly_name="New Game Project"
 folder_colors={
 "res://Media/Audio/": "red",
 "res://Media/Sprites/": "blue",
+"res://Media/UI/": "pink",
 "res://Media/User Interface/": "teal",
 "res://Scenes/": "green",
 "res://Scripts/": "purple"
