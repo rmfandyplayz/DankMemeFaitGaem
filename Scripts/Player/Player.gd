@@ -30,13 +30,6 @@ func _process(delta: float) -> void:
 		playerSprite.animation = "walk"
 		var speedFactor = clamp(velocity.length() / moveSpeed, 0, 1) # this is a value between 0 and 1
 		playerSprite.speed_scale = lerp(minSpriteAnimationSpeed, maxSpriteAnimationSpeed, speedFactor) # adjust animation FPS
-		
-		
-		#DEBUG TEST TEST TEST TEST
-		print("Velocity Length: ", velocity.length())
-		print("Velocity Length / MoveSpeed: ", (velocity.length() / moveSpeed))
-		print("Speed Factor: ", speedFactor)
-		print("Speed Scale: ", playerSprite.speed_scale) 
 	
 	# movement and burst
 	if(burstActive == true and velocity != Vector2.ZERO):
@@ -47,8 +40,8 @@ func _process(delta: float) -> void:
 	else:
 		# normal movement
 		var inputDirection: Vector2 = GetInput()
-		if(Input.is_action_just_pressed("Player_Burst") and inputDirection != Vector2.ZERO):
-			StartBurst(inputDirection)
+		if(Input.is_action_just_pressed("Player_Burst") and velocity != Vector2.ZERO):
+			StartBurst(velocity.normalized())
 		else:
 			MovePlayer(inputDirection, delta)
 

@@ -70,8 +70,7 @@ editor_draw_drag_margin = true
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.440433, 0.440433)
 sprite_frames = SubResource("SpriteFrames_nuque")
-animation = &"idle"
-frame_progress = 0.179913
+animation = &"boost"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fq4iy")

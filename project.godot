@@ -32,7 +32,6 @@ folder_colors={
 "res://Media/Audio/": "red",
 "res://Media/Sprites/": "blue",
 "res://Media/UI/": "pink",
-"res://Media/User Interface/": "teal",
 "res://Scenes/": "green",
 "res://Scripts/": "purple"
 }
