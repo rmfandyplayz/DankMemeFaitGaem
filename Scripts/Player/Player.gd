@@ -7,14 +7,26 @@ extends CharacterBody2D
 @export var burstSpeed : float
 @export var burstMaxDuration : float # in seconds
 
+@export var playerSprite : AnimatedSprite2D
+
 var burstActive : bool = false
 var burstDirection : Vector2 = Vector2.ZERO
 var burstTimer : float = 0 # current amount 
 
+func _ready() -> void:
+	playerSprite.animation = "idle"
+	playerSprite.play()
+
 
 
 func _process(delta: float) -> void:
-	print(velocity)
+	# player sprite changes
+	if(velocity == Vector2.ZERO):
+		playerSprite.animation = "idle"
+	elif(velocity != Vector2.ZERO and burstActive == false):
+		playerSprite.animation = "walk"
+	
+	# movement and burst
 	if(burstActive == true and velocity != Vector2.ZERO):
 		# burst movement
 		burstTimer -= delta
@@ -41,12 +53,14 @@ func MovePlayer(inputDirection : Vector2, delta : float):
 		
 
 func StartBurst(direction : Vector2):
+	playerSprite.animation = "boost"
 	burstActive = true
 	burstDirection = direction
 	burstTimer = burstMaxDuration
 	velocity = burstDirection * burstSpeed
 
 func EndBurst():
+	playerSprite.animation = "walk"
 	burstActive = false
 
 
@@ -58,8 +72,10 @@ func GetInput() -> Vector2:
 	if Input.is_action_pressed("ui_down"):
 		direction.y += 1
 	if Input.is_action_pressed("ui_left"):
+		playerSprite.flip_h = true
 		direction.x -= 1
 	if Input.is_action_pressed("ui_right"):
+		playerSprite.flip_h = false
 		direction.x += 1
 	
 	return direction.normalized()

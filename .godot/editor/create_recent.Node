@@ -1,7 +1,8 @@
+TileMapLayer
+AnimatedSprite2D
 StatusIndicator
 CollisionShape2D
 RigidBody2D
 CharacterBody2D
 Sprite2D
-AnimatedSprite2D
 Camera2D

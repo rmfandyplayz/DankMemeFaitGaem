@@ -1,14 +1,62 @@
-[gd_scene load_steps=4 format=3 uid="uid://couca6ih4wql4"]
+[gd_scene load_steps=11 format=3 uid="uid://couca6ih4wql4"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_mkxkn"]
+[ext_resource type="Texture2D" uid="uid://b7kmy4lyq60dx" path="res://Media/Sprites/Entities/Player/Boost_01.png" id="2_b5pem"]
+[ext_resource type="Texture2D" uid="uid://w4ulkoieu020" path="res://Media/Sprites/Entities/Player/Idle_01.png" id="2_cbyse"]
+[ext_resource type="Texture2D" uid="uid://bmmktf2ysdn6m" path="res://Media/Sprites/Entities/Player/Idle_02.png" id="3_o2wjk"]
+[ext_resource type="Texture2D" uid="uid://fgx0qbhexwgg" path="res://Media/Sprites/Entities/Player/Boost_02.png" id="3_sp40u"]
+[ext_resource type="Texture2D" uid="uid://cg448jr2pasoc" path="res://Media/Sprites/Entities/Player/Walk_01.png" id="4_gdxb4"]
+[ext_resource type="Texture2D" uid="uid://cglbk5ne1jsb8" path="res://Media/Sprites/Entities/Player/Wak_02.png" id="5_v3e5y"]
+[ext_resource type="Texture2D" uid="uid://dj1meo7gl633o" path="res://Media/Sprites/Entities/Player/Walk_03.png" id="6_ucs3v"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c6pb2"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_nuque"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b5pem")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sp40u")
+}],
+"loop": true,
+"name": &"boost",
+"speed": 25.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cbyse")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o2wjk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_gdxb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v3e5y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ucs3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v3e5y")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 4.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fq4iy"]
 size = Vector2(160, 160)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("playerSprite")]
 script = ExtResource("1_mkxkn")
+playerSprite = NodePath("Sprite")
 
 [node name="Camera" type="Camera2D" parent="."]
 position_smoothing_enabled = true
@@ -19,9 +67,11 @@ drag_bottom_margin = 0.3
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="TempSprite" type="Sprite2D" parent="."]
-scale = Vector2(160, 160)
-texture = SubResource("PlaceholderTexture2D_c6pb2")
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.440433, 0.440433)
+sprite_frames = SubResource("SpriteFrames_nuque")
+animation = &"idle"
+frame_progress = 0.179913
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fq4iy")
