@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2wguj6bu8y1s"]
+
+[ext_resource type="Script" path="res://Scripts/Audio System/AudioSystem.gd" id="1_ye4rd"]
+
+[node name="AudioSystem" type="Node"]
+script = ExtResource("1_ye4rd")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="SFX" type="Node" parent="."]

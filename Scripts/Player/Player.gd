@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var audioSystem : Node 
+
 @export var moveSpeed : float
 @export var acceleration: float
 @export var friction: float  # also how fast we decelerate
@@ -57,6 +59,7 @@ func MovePlayer(inputDirection : Vector2, delta : float):
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 		
 
+var burstMusic = preload("res://Media/Audio/Music/gasGasGas.mp3")
 func StartBurst(direction : Vector2):
 	playerSprite.animation = "boost"
 	playerSprite.speed_scale = 1
@@ -64,10 +67,12 @@ func StartBurst(direction : Vector2):
 	burstDirection = direction
 	burstTimer = burstMaxDuration
 	velocity = burstDirection * burstSpeed
+	AudioSystem.PlayMusic(burstMusic, 1, 1, true)
 
 func EndBurst():
 	playerSprite.animation = "walk"
 	burstActive = false
+	audioSystem.StopAudio(burstMusic, true, 0.8)
 
 
 func GetInput() -> Vector2:

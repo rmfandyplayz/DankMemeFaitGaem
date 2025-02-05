@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/gasGasGas.mp3-0daf71b05805bb4b2037604bc230d5e
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0.0
 bpm=154.0
 beat_count=0
