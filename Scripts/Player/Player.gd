@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-@export var audioSystem : Node 
-
 @export var moveSpeed : float
 @export var acceleration: float
 @export var friction: float  # also how fast we decelerate
@@ -72,7 +70,7 @@ func StartBurst(direction : Vector2):
 func EndBurst():
 	playerSprite.animation = "walk"
 	burstActive = false
-	audioSystem.StopAudio(burstMusic, true, 0.8)
+	AudioSystem.StopAudio(burstMusic, true, 0.8)
 
 
 func GetInput() -> Vector2:

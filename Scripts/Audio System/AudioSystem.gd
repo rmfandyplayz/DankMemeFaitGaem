@@ -2,10 +2,13 @@ extends Node
 
 signal AudioFinished(audioPlayer)
 
-@onready var musicNode : Node = get_node("Music")
-@onready var sfxNode : Node = get_node("SFX")
+@export var musicNode : Node
+@export var sfxNode : Node
 
 var _audioTimers = {}  # tracks timers for non-looping audio
+
+func _ready() -> void:
+	print(musicNode)
 
 # plays global music under the "Music" node
 func PlayMusic(audioStream: AudioStream, volume: float = 0.0, pitch: float = 1.0, looping: bool = false) -> AudioStreamPlayer:
@@ -17,8 +20,8 @@ func PlayMusic(audioStream: AudioStream, volume: float = 0.0, pitch: float = 1.0
 	# sets the audiostream to loop if it's set to looping in the file
 	if audioStream.has_method("set_loop"):
 		audioStream.loop = looping
-	print("Player: ", player)
-	musicNode.add_child(player)
+	print(musicNode)
+	add_child(player)
 	player.play()
 	
 	if not looping:
@@ -62,7 +65,7 @@ func PlaySound(audioStream: AudioStream, category: String = "SFX", volume: float
 	return player
 
 # stops given audio player and emits signal
-func StopAudio(audioPlayer: AudioStreamPlayer, fade: bool = false, fadeTime: float = 0.0) -> void:
+func StopAudio(audioPlayer: AudioStream, fade: bool = false, fadeTime: float = 0.0) -> void:
 	if not is_instance_valid(audioPlayer):
 		return
 	# if there was a timer on this audio player, stop it
@@ -75,8 +78,8 @@ func StopAudio(audioPlayer: AudioStreamPlayer, fade: bool = false, fadeTime: flo
 	
 	
 	if fade and fadeTime > 0:
-		var tween = Tween.new()
-		add_child(tween)
+		var tween = create_tween()
+		add_child(tween) # TODO why tf isn't this working
 		tween.interpolate_property(audioPlayer, "volume_db", audioPlayer.volume_db, -80, fadeTime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		tween.start()
 		tween.connect("tween_all_completed", _OnFadeCompleted.bind(audioPlayer, tween))

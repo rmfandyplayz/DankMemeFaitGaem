@@ -28,8 +28,7 @@ metadata/_edit_lock_ = true
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAACrAAAAAAAAAAAAAABWAQAAAAAAAAAAAAABAgAAAAAAAAAAAAD/////AQAAAAAAAACpAP//AQAAAAAAAABTAf//AQAAAAAAAAD9Af//AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_xx8ce")
 
-[node name="Player" parent="." node_paths=PackedStringArray("audioSystem") instance=ExtResource("2_57raj")]
-audioSystem = NodePath("../AudioSystem")
+[node name="Player" parent="." instance=ExtResource("2_57raj")]
 moveSpeed = 900.0
 acceleration = 2000.0
 friction = 900.0

@@ -1,6 +1,5 @@
 res://Scenes/Levels/00_Tutorial.tscn
 res://Scenes/Entities/Player.tscn
 res://Scenes/Utility Scenes/AudioSystem.tscn
-res://default_bus_layout.tres
 res://Scripts/Audio System/AudioSystem.gd
 res://Scripts/Player/Player.gd

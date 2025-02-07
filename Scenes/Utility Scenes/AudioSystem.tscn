@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" path="res://Scripts/Audio System/AudioSystem.gd" id="1_ye4rd"]
 
-[node name="AudioSystem" type="Node"]
+[node name="AudioSystem" type="Node" node_paths=PackedStringArray("musicNode", "sfxNode")]
 script = ExtResource("1_ye4rd")
+musicNode = NodePath("Music")
+sfxNode = NodePath("SFX")
 
 [node name="Music" type="Node" parent="."]
 
