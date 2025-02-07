@@ -1,11 +1,13 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1738871239
+::res://::1738952316
 default_bus_layout.tres::AudioBusLayout::5446819712888266413::1738774797::0::1::::<><>::
 ::res://Media/::1738607884
 ::res://Media/Audio/::1738607884
-::res://Media/Audio/Music/::1738776111
-gasGasGas.mp3::AudioStreamMP3::7410945108828162307::1738568583::1738871239::1::::<><>::
-::res://Media/Audio/SFX/::1737999808
+::res://Media/Audio/Music/::1738949576
+gasGasGas.mp3::AudioStreamMP3::7410945108828162307::1738568583::1738949576::1::::<><>::
+::res://Media/Audio/SFX/::1738952316
+krabsWalk.mp3::AudioStreamMP3::786803337079752263::1738949550::1738949583::1::::<><>::
+sonicBoost.mp3::AudioStreamMP3::6515077974737226728::1738952313::1738952316::1::::<><>::
 ::res://Media/Sprites/::1738342587
 ::res://Media/Sprites/Entities/::1738342593
 ::res://Media/Sprites/Entities/Player/::1738568594
@@ -32,18 +34,18 @@ Obstacle_Illuminati.png::CompressedTexture2D::508534518396236710::1738341871::17
 ::res://Media/UI/::1738568592
 bootsplash.png::CompressedTexture2D::690618685949593178::1738568583::1738568592::1::::<><>::
 ::res://Scenes/::1738774096
-::res://Scenes/Entities/::1738777730
-Player.tscn::PackedScene::5796895808325359027::1738777730::0::1::::<><>::res://Scripts/Player/Player.gd<>uid://b7kmy4lyq60dx::::res://Media/Sprites/Entities/Player/Boost_01.png<>uid://w4ulkoieu020::::res://Media/Sprites/Entities/Player/Idle_01.png<>uid://bmmktf2ysdn6m::::res://Media/Sprites/Entities/Player/Idle_02.png<>uid://fgx0qbhexwgg::::res://Media/Sprites/Entities/Player/Boost_02.png<>uid://cg448jr2pasoc::::res://Media/Sprites/Entities/Player/Walk_01.png<>uid://cglbk5ne1jsb8::::res://Media/Sprites/Entities/Player/Wak_02.png<>uid://dj1meo7gl633o::::res://Media/Sprites/Entities/Player/Walk_03.png
+::res://Scenes/Entities/::1738952284
+Player.tscn::PackedScene::5796895808325359027::1738952284::0::1::::<><>::res://Scripts/Player/Player.gd<>uid://b7kmy4lyq60dx::::res://Media/Sprites/Entities/Player/Boost_01.png<>uid://w4ulkoieu020::::res://Media/Sprites/Entities/Player/Idle_01.png<>uid://bmmktf2ysdn6m::::res://Media/Sprites/Entities/Player/Idle_02.png<>uid://fgx0qbhexwgg::::res://Media/Sprites/Entities/Player/Boost_02.png<>uid://cg448jr2pasoc::::res://Media/Sprites/Entities/Player/Walk_01.png<>uid://cglbk5ne1jsb8::::res://Media/Sprites/Entities/Player/Wak_02.png<>uid://dj1meo7gl633o::::res://Media/Sprites/Entities/Player/Walk_03.png<>uid://lheshvjgiy0v::::res://Media/Audio/SFX/krabsWalk.mp3
 ::res://Scenes/Environment Elements/::1737999533
-::res://Scenes/Levels/::1738777730
-00_Tutorial.tscn::PackedScene::5601771421701421598::1738777730::0::1::::<><>::uid://boxibhxjg4pr4::::res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Walls.png<>uid://c2wguj6bu8y1s::::res://Scenes/Utility Scenes/AudioSystem.tscn<>uid://couca6ih4wql4::::res://Scenes/Entities/Player.tscn<>uid://bmx572cbdy1k6::::res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Carpet.png
-::res://Scenes/Utility Scenes/::1738777777
-AudioSystem.tscn::PackedScene::6713756994709664270::1738777777::0::1::::<><>::res://Scripts/Audio System/AudioSystem.gd
+::res://Scenes/Levels/::1738950329
+00_Tutorial.tscn::PackedScene::5601771421701421598::1738950329::0::1::::<><>::uid://boxibhxjg4pr4::::res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Walls.png<>uid://c2wguj6bu8y1s::::res://Scenes/Utility Scenes/AudioSystem.tscn<>uid://couca6ih4wql4::::res://Scenes/Entities/Player.tscn<>uid://bmx572cbdy1k6::::res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Carpet.png
+::res://Scenes/Utility Scenes/::1738950329
+AudioSystem.tscn::PackedScene::6713756994709664270::1738950329::0::1::::<><>::res://Scripts/Audio System/AudioSystem.gd
 ::res://Scripts/::1738774057
-::res://Scripts/Audio System/::1738777729
-AudioSystem.gd::GDScript::-1::1738777729::0::1::::<>Node<>::
-::res://Scripts/Player/::1738777616
-Player.gd::GDScript::-1::1738777616::0::1::::<>CharacterBody2D<>::
+::res://Scripts/Audio System/::1738950281
+AudioSystem.gd::GDScript::-1::1738950281::0::1::::<>Node<>::
+::res://Scripts/Player/::1738950328
+Player.gd::GDScript::-1::1738950328::0::1::::<>CharacterBody2D<>::
 ::res://Testing/::1738604320
 Test.tscn::PackedScene::5894206502833085222::1738604320::0::1::::<><>::
 ::res://Testing/Test Assets/::1738568596

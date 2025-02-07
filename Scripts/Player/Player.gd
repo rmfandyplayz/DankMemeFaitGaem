@@ -11,6 +11,9 @@ extends CharacterBody2D
 @export var minSpriteAnimationSpeed : float = 0.75
 @export var maxSpriteAnimationSpeed : float = 3.0
 
+@export var walkingSFX : AudioStreamPlayer2D
+var disableWalkSFX : bool = false
+
 var burstActive : bool = false
 var burstDirection : Vector2 = Vector2.ZERO
 var burstTimer : float = 0 # current amount 
@@ -20,16 +23,20 @@ func _ready() -> void:
 	playerSprite.play()
 
 
-
 func _process(delta: float) -> void:
 	# player sprite changes
 	if(velocity == Vector2.ZERO):
 		playerSprite.animation = "idle"
 		playerSprite.speed_scale = 1 # reset animation FPS
+		walkingSFX.stop()
+		disableWalkSFX = false
 	elif(velocity != Vector2.ZERO and burstActive == false):
 		playerSprite.animation = "walk"
 		var speedFactor = clamp(velocity.length() / moveSpeed, 0, 1) # this is a value between 0 and 1
 		playerSprite.speed_scale = lerp(minSpriteAnimationSpeed, maxSpriteAnimationSpeed, speedFactor) # adjust animation FPS
+		if disableWalkSFX == false: 
+			walkingSFX.play()
+			disableWalkSFX = true
 	
 	# movement and burst
 	if(burstActive == true and velocity != Vector2.ZERO):
@@ -57,20 +64,28 @@ func MovePlayer(inputDirection : Vector2, delta : float):
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 		
 
-var burstMusic = preload("res://Media/Audio/Music/gasGasGas.mp3")
+
+var burstMusic # the actual audio file/audio stream of the burst music
+var burstMusicTimestamp : float = 0 # so that the music can pick off where it left off
 func StartBurst(direction : Vector2):
+	disableWalkSFX = true
+	walkingSFX.stop()
 	playerSprite.animation = "boost"
 	playerSprite.speed_scale = 1
 	burstActive = true
 	burstDirection = direction
 	burstTimer = burstMaxDuration
 	velocity = burstDirection * burstSpeed
-	AudioSystem.PlayMusic(burstMusic, 1, 1, true)
+	burstMusic = load("res://Media/Audio/Music/gasGasGas.mp3")
+	AudioSystem.PlaySound(load("res://Media/Audio/SFX/sonicBoost.mp3"), "SFX_Master", .1, 1, false)
+	burstMusic = AudioSystem.PlayMusic(burstMusic, .6, 1, true, burstMusicTimestamp)
+	
 
 func EndBurst():
 	playerSprite.animation = "walk"
 	burstActive = false
-	AudioSystem.StopAudio(burstMusic, true, 0.8)
+	disableWalkSFX = false
+	burstMusicTimestamp = AudioSystem.StopAudio(burstMusic, true, 1)
 
 
 func GetInput() -> Vector2:

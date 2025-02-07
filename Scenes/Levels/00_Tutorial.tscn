@@ -33,5 +33,5 @@ moveSpeed = 900.0
 acceleration = 2000.0
 friction = 900.0
 burstSpeed = 1700.0
-burstMaxDuration = 1.0
+burstMaxDuration = 15.0
 maxSpriteAnimationSpeed = 2.25

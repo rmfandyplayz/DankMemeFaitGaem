@@ -7,22 +7,18 @@ signal AudioFinished(audioPlayer)
 
 var _audioTimers = {}  # tracks timers for non-looping audio
 
-func _ready() -> void:
-	print(musicNode)
-
 # plays global music under the "Music" node
-func PlayMusic(audioStream: AudioStream, volume: float = 0.0, pitch: float = 1.0, looping: bool = false) -> AudioStreamPlayer:
+func PlayMusic(audioStream: AudioStream, volume: float = 0.0, pitch: float = 1.0, looping: bool = false, startFromDuration : float = 0) -> AudioStreamPlayer:
 	var player = AudioStreamPlayer.new()
 	player.stream = audioStream
-	player.volume_db = volume
+	player.volume_db = linear_to_db(volume)
 	player.pitch_scale = pitch
 	player.bus = "Music_Master"
 	# sets the audiostream to loop if it's set to looping in the file
 	if audioStream.has_method("set_loop"):
 		audioStream.loop = looping
-	print(musicNode)
 	add_child(player)
-	player.play()
+	player.play(startFromDuration)
 	
 	if not looping:
 		var timer = Timer.new()
@@ -39,7 +35,7 @@ func PlayMusic(audioStream: AudioStream, volume: float = 0.0, pitch: float = 1.0
 func PlaySound(audioStream: AudioStream, category: String = "SFX", volume: float = 0.0, pitch: float = 1.0, looping: bool = false) -> AudioStreamPlayer:
 	var player = AudioStreamPlayer.new()
 	player.stream = audioStream
-	player.volume_db = volume
+	player.volume_db = linear_to_db(volume)
 	player.pitch_scale = pitch
 	
 	match category:
@@ -50,7 +46,7 @@ func PlaySound(audioStream: AudioStream, category: String = "SFX", volume: float
 		_:
 			player.bus = "SFX_Master"
 	
-	sfxNode.add_child(player)
+	add_child(player)
 	player.play()
 	
 	if not looping:
@@ -65,9 +61,9 @@ func PlaySound(audioStream: AudioStream, category: String = "SFX", volume: float
 	return player
 
 # stops given audio player and emits signal
-func StopAudio(audioPlayer: AudioStream, fade: bool = false, fadeTime: float = 0.0) -> void:
+func StopAudio(audioPlayer: AudioStreamPlayer, fade: bool = false, fadeTime: float = 0.0) -> float:
 	if not is_instance_valid(audioPlayer):
-		return
+		return -1
 	# if there was a timer on this audio player, stop it
 	if _audioTimers.has(audioPlayer):
 		var timer = _audioTimers[audioPlayer]
@@ -79,14 +75,15 @@ func StopAudio(audioPlayer: AudioStream, fade: bool = false, fadeTime: float = 0
 	
 	if fade and fadeTime > 0:
 		var tween = create_tween()
-		add_child(tween) # TODO why tf isn't this working
-		tween.interpolate_property(audioPlayer, "volume_db", audioPlayer.volume_db, -80, fadeTime, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		tween.start()
+		tween.tween_property(audioPlayer, "volume_db", -80, fadeTime)
 		tween.connect("tween_all_completed", _OnFadeCompleted.bind(audioPlayer, tween))
 	else:
+		audioPlayer.get_playback_position()
 		audioPlayer.stop()
 		emit_signal("AudioFinished", audioPlayer)
 		audioPlayer.queue_free()
+	
+	return audioPlayer.get_playback_position()
 
 # called when a non looping audio finishes playing
 func _OnAudioFinished(audioPlayer: AudioStreamPlayer, timer: Timer) -> void:
