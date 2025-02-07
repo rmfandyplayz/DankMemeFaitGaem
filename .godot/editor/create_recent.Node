@@ -1,5 +1,10 @@
-AudioStreamPlayer2D
+Node2D
+Control
 Node
+ColorRect
+CanvasLayer
+TextureRect
+AudioStreamPlayer2D
 TileMapLayer
 AnimatedSprite2D
 StatusIndicator

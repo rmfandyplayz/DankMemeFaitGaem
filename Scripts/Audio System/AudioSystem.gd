@@ -76,7 +76,8 @@ func StopAudio(audioPlayer: AudioStreamPlayer, fade: bool = false, fadeTime: flo
 	if fade and fadeTime > 0:
 		var tween = create_tween()
 		tween.tween_property(audioPlayer, "volume_db", -80, fadeTime)
-		tween.connect("tween_all_completed", _OnFadeCompleted.bind(audioPlayer, tween))
+		# tween.connect("tween_all_completed", _OnFadeCompleted.bind(audioPlayer, tween))
+		# TODO implement later????
 	else:
 		audioPlayer.get_playback_position()
 		audioPlayer.stop()

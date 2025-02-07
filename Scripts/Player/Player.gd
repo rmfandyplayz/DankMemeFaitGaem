@@ -13,6 +13,7 @@ extends CharacterBody2D
 
 @export var walkingSFX : AudioStreamPlayer2D
 var disableWalkSFX : bool = false
+@export var speedLines : ColorRect
 
 var burstActive : bool = false
 var burstDirection : Vector2 = Vector2.ZERO
@@ -25,6 +26,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# player sprite changes
+	speedLines.visible = velocity != Vector2.ZERO
 	if(velocity == Vector2.ZERO):
 		playerSprite.animation = "idle"
 		playerSprite.speed_scale = 1 # reset animation FPS
@@ -34,9 +36,12 @@ func _process(delta: float) -> void:
 		playerSprite.animation = "walk"
 		var speedFactor = clamp(velocity.length() / moveSpeed, 0, 1) # this is a value between 0 and 1
 		playerSprite.speed_scale = lerp(minSpriteAnimationSpeed, maxSpriteAnimationSpeed, speedFactor) # adjust animation FPS
+		
 		if disableWalkSFX == false: 
 			walkingSFX.play()
 			disableWalkSFX = true
+		
+	speedLines.material.set_shader_parameter("line_density", lerp(0.1, 0.7, clamp(velocity.length() / burstSpeed, 0, 1)))
 	
 	# movement and burst
 	if(burstActive == true and velocity != Vector2.ZERO):

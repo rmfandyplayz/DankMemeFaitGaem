@@ -35,3 +35,12 @@ friction = 900.0
 burstSpeed = 1700.0
 burstMaxDuration = 15.0
 maxSpriteAnimationSpeed = 2.25
+
+[node name="Camera" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+drag_left_margin = 0.3
+drag_top_margin = 0.3
+drag_right_margin = 0.3
+drag_bottom_margin = 0.3
+editor_draw_limits = true
+editor_draw_drag_margin = true
