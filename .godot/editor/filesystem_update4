@@ -1,7 +1,7 @@
-res://Scenes/Entities/Player.tscn
+res://Scenes/Levels/00_Tutorial.tscn
 res://Shaders/SpeedLines.gdshader
 res://Shaders/SpeedLines.tres
-res://Scenes/Levels/00_Tutorial.tscn
+res://Scenes/Environment Elements/MovingPlatform.tscn
+res://Scripts/Environment Elements/MovingPlatform.gd
+res://Scenes/Entities/Player.tscn
 res://Scenes/Utility Scenes/AudioSystem.tscn
-res://Scripts/Player/Player.gd
-res://Scripts/Audio System/AudioSystem.gd

@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1738962973
+::res://::1739293354
 default_bus_layout.tres::AudioBusLayout::5446819712888266413::1738774797::0::1::::<><>::
 ::res://Media/::1738607884
 ::res://Media/Audio/::1738607884
@@ -8,7 +8,7 @@ gasGasGas.mp3::AudioStreamMP3::7410945108828162307::1738568583::1738949576::1:::
 ::res://Media/Audio/SFX/::1738952316
 krabsWalk.mp3::AudioStreamMP3::786803337079752263::1738949550::1738949583::1::::<><>::
 sonicBoost.mp3::AudioStreamMP3::6515077974737226728::1738952313::1738952316::1::::<><>::
-::res://Media/Sprites/::1738342587
+::res://Media/Sprites/::1739293338
 ::res://Media/Sprites/Entities/::1738342593
 ::res://Media/Sprites/Entities/Player/::1738568594
 Boost_01.png::CompressedTexture2D::4653880461900731929::1738343444::1738568594::1::::<><>::
@@ -18,9 +18,10 @@ Idle_02.png::CompressedTexture2D::3254100745851172822::1738342851::1738568593::1
 Wak_02.png::CompressedTexture2D::5216762755440692147::1738342851::1738568593::1::::<><>::
 Walk_01.png::CompressedTexture2D::5255661608289868086::1738342851::1738568593::1::::<><>::
 Walk_03.png::CompressedTexture2D::7845371997565173278::1738342851::1738568593::1::::<><>::
-::res://Media/Sprites/Environment/::1738568594
+::res://Media/Sprites/Environment/::1739293354
 Clouds.png::CompressedTexture2D::2224265454056387566::1737740326::1738568593::1::::<><>::
 Grass.jpg::CompressedTexture2D::718713047301034584::1737740696::1738568594::1::::<><>::
+MovePlatform_NyanCat.png::CompressedTexture2D::4102433411206007517::1739293333::1739293354::1::::<><>::
 ::res://Media/Sprites/LevelSpecific/::1738169195
 ::res://Media/Sprites/LevelSpecific/Level_00_Tutorial/::1738568594
 Background_Carpet.png::CompressedTexture2D::3278047572151295979::1738169231::1738568594::1::::<><>::
@@ -34,20 +35,22 @@ Obstacle_Illuminati.png::CompressedTexture2D::508534518396236710::1738341871::17
 ::res://Media/UI/::1738568592
 bootsplash.png::CompressedTexture2D::690618685949593178::1738568583::1738568592::1::::<><>::
 ::res://Scenes/::1738774096
-::res://Scenes/Entities/::1738962767
-Player.tscn::PackedScene::5796895808325359027::1738962767::0::1::::<><>::res://Scripts/Player/Player.gd<>uid://b7kmy4lyq60dx::::res://Media/Sprites/Entities/Player/Boost_01.png<>uid://w4ulkoieu020::::res://Media/Sprites/Entities/Player/Idle_01.png<>uid://bmmktf2ysdn6m::::res://Media/Sprites/Entities/Player/Idle_02.png<>uid://fgx0qbhexwgg::::res://Media/Sprites/Entities/Player/Boost_02.png<>uid://cg448jr2pasoc::::res://Media/Sprites/Entities/Player/Walk_01.png<>uid://cglbk5ne1jsb8::::res://Media/Sprites/Entities/Player/Wak_02.png<>uid://dj1meo7gl633o::::res://Media/Sprites/Entities/Player/Walk_03.png<>uid://lheshvjgiy0v::::res://Media/Audio/SFX/krabsWalk.mp3<>res://Shaders/SpeedLines.gdshader
-::res://Scenes/Environment Elements/::1737999533
-::res://Scenes/Levels/::1738962750
-00_Tutorial.tscn::PackedScene::5601771421701421598::1738962750::0::1::::<><>::uid://boxibhxjg4pr4::::res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Walls.png<>uid://c2wguj6bu8y1s::::res://Scenes/Utility Scenes/AudioSystem.tscn<>uid://couca6ih4wql4::::res://Scenes/Entities/Player.tscn<>uid://bmx572cbdy1k6::::res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Carpet.png
-::res://Scenes/Utility Scenes/::1738962750
-AudioSystem.tscn::PackedScene::6713756994709664270::1738962750::0::1::::<><>::res://Scripts/Audio System/AudioSystem.gd
+::res://Scenes/Entities/::1739291475
+Player.tscn::PackedScene::5796895808325359027::1739291475::0::1::::<><>::res://Scripts/Player/Player.gd<>uid://bjfiyy7kntp5u::::res://Shaders/SpeedLines.tres<>uid://b7kmy4lyq60dx::::res://Media/Sprites/Entities/Player/Boost_01.png<>uid://w4ulkoieu020::::res://Media/Sprites/Entities/Player/Idle_01.png<>uid://bmmktf2ysdn6m::::res://Media/Sprites/Entities/Player/Idle_02.png<>uid://fgx0qbhexwgg::::res://Media/Sprites/Entities/Player/Boost_02.png<>uid://cg448jr2pasoc::::res://Media/Sprites/Entities/Player/Walk_01.png<>uid://cglbk5ne1jsb8::::res://Media/Sprites/Entities/Player/Wak_02.png<>uid://dj1meo7gl633o::::res://Media/Sprites/Entities/Player/Walk_03.png<>uid://lheshvjgiy0v::::res://Media/Audio/SFX/krabsWalk.mp3
+::res://Scenes/Environment Elements/::1739293915
+MovingPlatform.tscn::PackedScene::1676705873573104886::1739294294::0::1::::<><>::uid://bypiqjvcca5jt::::res://Media/Sprites/Environment/MovePlatform_NyanCat.png
+::res://Scenes/Levels/::1739293285
+00_Tutorial.tscn::PackedScene::5601771421701421598::1739293285::0::1::::<><>::uid://boxibhxjg4pr4::::res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Walls.png<>uid://c2wguj6bu8y1s::::res://Scenes/Utility Scenes/AudioSystem.tscn<>uid://couca6ih4wql4::::res://Scenes/Entities/Player.tscn<>uid://bmx572cbdy1k6::::res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Carpet.png
+::res://Scenes/Utility Scenes/::1739291475
+AudioSystem.tscn::PackedScene::6713756994709664270::1739291475::0::1::::<><>::res://Scripts/Audio System/AudioSystem.gd
 ::res://Scripts/::1738774057
-::res://Scripts/Audio System/::1738952590
-AudioSystem.gd::GDScript::-1::1738952590::0::1::::<>Node<>::
-::res://Scripts/Player/::1738952665
-Player.gd::GDScript::-1::1738952665::0::1::::<>CharacterBody2D<>::
-::res://Shaders/::1738962864
-SpeedLines.gdshader::Shader::-1::1738962864::0::1::::<><>::
+::res://Scripts/Audio System/::1738963653
+AudioSystem.gd::GDScript::-1::1738963653::0::1::::<>Node<>::
+::res://Scripts/Player/::1738965301
+Player.gd::GDScript::-1::1738965301::0::1::::<>CharacterBody2D<>::
+::res://Shaders/::1739293915
+SpeedLines.gdshader::Shader::-1::1739294294::0::1::::<><>::
+SpeedLines.tres::ShaderMaterial::3028972070668177140::1739293236::0::1::::<><>::res://Shaders/SpeedLines.gdshader
 ::res://Testing/::1738604320
 Test.tscn::PackedScene::5894206502833085222::1738604320::0::1::::<><>::
 ::res://Testing/Test Assets/::1738568596
