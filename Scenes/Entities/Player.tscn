@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bmmktf2ysdn6m" path="res://Media/Sprites/Entities/Player/Idle_02.png" id="3_o2wjk"]
 [ext_resource type="Texture2D" uid="uid://fgx0qbhexwgg" path="res://Media/Sprites/Entities/Player/Boost_02.png" id="3_sp40u"]
 [ext_resource type="Texture2D" uid="uid://cg448jr2pasoc" path="res://Media/Sprites/Entities/Player/Walk_01.png" id="4_gdxb4"]
-[ext_resource type="Texture2D" uid="uid://cglbk5ne1jsb8" path="res://Media/Sprites/Entities/Player/Wak_02.png" id="5_v3e5y"]
+[ext_resource type="Texture2D" uid="uid://cglbk5ne1jsb8" path="res://Media/Sprites/Entities/Player/Walk_02.png" id="5_v3e5y"]
 [ext_resource type="Texture2D" uid="uid://dj1meo7gl633o" path="res://Media/Sprites/Entities/Player/Walk_03.png" id="6_ucs3v"]
 [ext_resource type="AudioStream" uid="uid://lheshvjgiy0v" path="res://Media/Audio/SFX/krabsWalk.mp3" id="9_tl2x1"]
 
@@ -60,9 +60,9 @@ size = Vector2(160, 160)
 script = ExtResource("1_mkxkn")
 playerSprite = NodePath("Sprite")
 walkingSFX = NodePath("SFX/WalkingSFX")
-speedLines = NodePath("Control/SpeedLines")
+speedLines = NodePath("CameraDependentControls/SpeedLines")
 
-[node name="Control" type="Control" parent="."]
+[node name="CameraDependentControls" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -1778.0
@@ -70,7 +70,7 @@ offset_top = -1000.0
 offset_right = 1778.0
 offset_bottom = 1000.0
 
-[node name="SpeedLines" type="ColorRect" parent="Control"]
+[node name="SpeedLines" type="ColorRect" parent="CameraDependentControls"]
 material = ExtResource("2_ax7n0")
 layout_mode = 1
 anchors_preset = -1
@@ -89,7 +89,7 @@ size_flags_horizontal = 4
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.440433, 0.440433)
 sprite_frames = SubResource("SpriteFrames_nuque")
-animation = &"boost"
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fq4iy")
@@ -100,3 +100,15 @@ shape = SubResource("RectangleShape2D_fq4iy")
 stream = ExtResource("9_tl2x1")
 volume_db = -2.0
 bus = &"SFX_Master"
+
+[node name="Camera" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+drag_left_margin = 0.3
+drag_top_margin = 0.3
+drag_right_margin = 0.3
+drag_bottom_margin = 0.3
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+layer = 2

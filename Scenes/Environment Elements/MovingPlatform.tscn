@@ -98,13 +98,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mcuhv"]
 size = Vector2(111, 111)
 
-[node name="MovingPlatform" type="CharacterBody2D"]
+[node name="MovingPlatform" type="AnimatableBody2D" node_paths=PackedStringArray("platformSprite")]
 texture_filter = 1
 script = ExtResource("1_j1e6d")
+platformSprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_anwxg")
-frame_progress = 0.72876
+frame_progress = 0.56459
 offset = Vector2(-55, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

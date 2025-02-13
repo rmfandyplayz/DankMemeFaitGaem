@@ -1,14 +1,14 @@
+CanvasLayer
+Control
+AnimatableBody2D
 AnimatedSprite2D
 CharacterBody2D
 CollisionShape2D
 Node2D
-Control
 Node
 ColorRect
-CanvasLayer
 TextureRect
 AudioStreamPlayer2D
 TileMapLayer
 StatusIndicator
 RigidBody2D
-Sprite2D

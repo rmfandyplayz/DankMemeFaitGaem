@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cglbk5ne1jsb8"
-path="res://.godot/imported/Wak_02.png-3162ff15b9af6887a0f96a0f74878a6f.ctex"
+uid="uid://csm3ornlvmvgc"
+path="res://.godot/imported/Shoop_02.png-8d10141cf1b96805f9ef0461af369db0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Media/Sprites/Entities/Player/Wak_02.png"
-dest_files=["res://.godot/imported/Wak_02.png-3162ff15b9af6887a0f96a0f74878a6f.ctex"]
+source_file="res://Media/Sprites/Weapons/Shoop_02.png"
+dest_files=["res://.godot/imported/Shoop_02.png-8d10141cf1b96805f9ef0461af369db0.ctex"]
 
 [params]
 
