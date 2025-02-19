@@ -1,5 +1,7 @@
-CanvasLayer
+TextureProgressBar
+GraphEdit
 Control
+CanvasLayer
 AnimatableBody2D
 AnimatedSprite2D
 CharacterBody2D
@@ -11,4 +13,3 @@ TextureRect
 AudioStreamPlayer2D
 TileMapLayer
 StatusIndicator
-RigidBody2D

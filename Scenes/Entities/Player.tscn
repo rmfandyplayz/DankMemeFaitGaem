@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://couca6ih4wql4"]
+[gd_scene load_steps=15 format=3 uid="uid://couca6ih4wql4"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_mkxkn"]
 [ext_resource type="Material" uid="uid://bjfiyy7kntp5u" path="res://Shaders/SpeedLines.tres" id="2_ax7n0"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://cglbk5ne1jsb8" path="res://Media/Sprites/Entities/Player/Walk_02.png" id="5_v3e5y"]
 [ext_resource type="Texture2D" uid="uid://dj1meo7gl633o" path="res://Media/Sprites/Entities/Player/Walk_03.png" id="6_ucs3v"]
 [ext_resource type="AudioStream" uid="uid://lheshvjgiy0v" path="res://Media/Audio/SFX/krabsWalk.mp3" id="9_tl2x1"]
+[ext_resource type="Texture2D" uid="uid://c8kc04qax1ptw" path="res://Media/UI/Bar_Boost_Empty.png" id="11_0gtg8"]
+[ext_resource type="Texture2D" uid="uid://cig4pd068ln7v" path="res://Media/UI/Bar_Boost_Fill.png" id="12_4ntq1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nuque"]
 animations = [{
@@ -56,11 +58,27 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fq4iy"]
 size = Vector2(160, 160)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("playerSprite", "walkingSFX", "speedLines")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("playerSprite", "walkingSFX", "speedLines", "burstBar")]
 script = ExtResource("1_mkxkn")
-playerSprite = NodePath("Sprite")
+moveSpeed = 900.0
+acceleration = 2000.0
+friction = 900.0
+playerSprite = NodePath("PlayerSprite")
+maxSpriteAnimationSpeed = 2.25
 walkingSFX = NodePath("SFX/WalkingSFX")
 speedLines = NodePath("CameraDependentControls/SpeedLines")
+burstSpeed = 1700.0
+burstMaxDuration = 3.0
+burstBar = NodePath("Canvas/CanvasControl/BurstBar")
+
+[node name="Camera" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+drag_left_margin = 0.3
+drag_top_margin = 0.3
+drag_right_margin = 0.3
+drag_bottom_margin = 0.3
+editor_draw_limits = true
+editor_draw_drag_margin = true
 
 [node name="CameraDependentControls" type="Control" parent="."]
 layout_mode = 3
@@ -86,7 +104,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.440433, 0.440433)
 sprite_frames = SubResource("SpriteFrames_nuque")
 animation = &"walk"
@@ -101,14 +119,25 @@ stream = ExtResource("9_tl2x1")
 volume_db = -2.0
 bus = &"SFX_Master"
 
-[node name="Camera" type="Camera2D" parent="."]
-position_smoothing_enabled = true
-drag_left_margin = 0.3
-drag_top_margin = 0.3
-drag_right_margin = 0.3
-drag_bottom_margin = 0.3
-editor_draw_limits = true
-editor_draw_drag_margin = true
-
 [node name="Canvas" type="CanvasLayer" parent="."]
 layer = 2
+
+[node name="CanvasControl" type="Control" parent="Canvas"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BurstBar" type="TextureProgressBar" parent="Canvas/CanvasControl"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 258.0
+offset_bottom = 96.0
+step = 0.01
+nine_patch_stretch = true
+texture_over = ExtResource("11_0gtg8")
+texture_progress = ExtResource("12_4ntq1")
+texture_progress_offset = Vector2(-12, -3)

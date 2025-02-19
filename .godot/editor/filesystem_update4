@@ -1,3 +1,5 @@
 res://Scenes/Entities/Player.tscn
 res://Shaders/SpeedLines.gdshader
 res://Shaders/SpeedLines.tres
+res://Scenes/Levels/00_Tutorial.tscn
+res://Scripts/Player/Player.gd
