@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://couca6ih4wql4"]
+[gd_scene load_steps=23 format=3 uid="uid://couca6ih4wql4"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_mkxkn"]
 [ext_resource type="Material" uid="uid://bjfiyy7kntp5u" path="res://Shaders/SpeedLines.tres" id="2_ax7n0"]
@@ -10,8 +10,49 @@
 [ext_resource type="Texture2D" uid="uid://cglbk5ne1jsb8" path="res://Media/Sprites/Entities/Player/Walk_02.png" id="5_v3e5y"]
 [ext_resource type="Texture2D" uid="uid://dj1meo7gl633o" path="res://Media/Sprites/Entities/Player/Walk_03.png" id="6_ucs3v"]
 [ext_resource type="AudioStream" uid="uid://lheshvjgiy0v" path="res://Media/Audio/SFX/krabsWalk.mp3" id="9_tl2x1"]
+[ext_resource type="Texture2D" uid="uid://sjy17nhxhjb2" path="res://Media/Sprites/Entities/Player/Boost_Fire_Init_0.png" id="10_87g54"]
 [ext_resource type="Texture2D" uid="uid://c8kc04qax1ptw" path="res://Media/UI/Bar_Boost_Empty.png" id="11_0gtg8"]
+[ext_resource type="Texture2D" uid="uid://gqgck5efusys" path="res://Media/Sprites/Entities/Player/Boost_Fire_Init_1.png" id="11_6aigi"]
 [ext_resource type="Texture2D" uid="uid://cig4pd068ln7v" path="res://Media/UI/Bar_Boost_Fill.png" id="12_4ntq1"]
+[ext_resource type="Texture2D" uid="uid://by6gdxmph8dv4" path="res://Media/Sprites/Entities/Player/Boost_Fire_Init_2.png" id="12_we6ho"]
+[ext_resource type="Texture2D" uid="uid://c7jufy6vp4m3s" path="res://Media/Sprites/Entities/Player/Boost_Fire_Loop_0.png" id="13_pqcj5"]
+[ext_resource type="Texture2D" uid="uid://mt41g5itjkfb" path="res://Media/Sprites/Entities/Player/Boost_Fire_Loop_1.png" id="14_lm8kc"]
+[ext_resource type="Texture2D" uid="uid://blur4twiadbhs" path="res://Media/Sprites/Entities/Player/Boost_Fire_Loop_2.png" id="15_0q4i0"]
+[ext_resource type="Texture2D" uid="uid://cxh0pdrtxfpyo" path="res://Media/Sprites/Entities/Player/Boost_Fire_Loop_3.png" id="16_cfr63"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rebbf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_87g54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6aigi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_we6ho")
+}],
+"loop": false,
+"name": &"init",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_pqcj5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_lm8kc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_0q4i0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_cfr63")
+}],
+"loop": true,
+"name": &"loop",
+"speed": 17.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nuque"]
 animations = [{
@@ -58,18 +99,19 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fq4iy"]
 size = Vector2(160, 160)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("playerSprite", "walkingSFX", "speedLines", "burstBar")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("playerSprite", "walkingSFX", "speedLines", "burstBar", "burstFlame")]
 script = ExtResource("1_mkxkn")
 moveSpeed = 900.0
 acceleration = 2000.0
 friction = 900.0
-playerSprite = NodePath("PlayerSprite")
+playerSprite = NodePath("Sprites/PlayerSprite")
 maxSpriteAnimationSpeed = 2.25
 walkingSFX = NodePath("SFX/WalkingSFX")
 speedLines = NodePath("CameraDependentControls/SpeedLines")
 burstSpeed = 1700.0
 burstMaxDuration = 3.0
 burstBar = NodePath("Canvas/CanvasControl/BurstBar")
+burstFlame = NodePath("Sprites/BurstFlame")
 
 [node name="Camera" type="Camera2D" parent="."]
 position_smoothing_enabled = true
@@ -104,10 +146,19 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 
-[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="BurstFlame" type="AnimatedSprite2D" parent="Sprites"]
+visible = false
+position = Vector2(-174, 5)
+scale = Vector2(0.560484, 0.560484)
+sprite_frames = SubResource("SpriteFrames_rebbf")
+animation = &"init"
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="Sprites"]
 scale = Vector2(0.440433, 0.440433)
 sprite_frames = SubResource("SpriteFrames_nuque")
-animation = &"walk"
+animation = &"boost"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fq4iy")
@@ -129,6 +180,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="BurstBar" type="TextureProgressBar" parent="Canvas/CanvasControl"]
 layout_mode = 0

@@ -12,7 +12,6 @@ extends CharacterBody2D
 var disableWalkSFX : bool = false
 @export var speedLines : ColorRect
 
-
 @export var burstSpeed : float
 @export var burstMaxDuration : float # in seconds
 @export var burstRechargeSpeed : float # how many seconds per second
@@ -22,8 +21,10 @@ var burstRechargeCooldownTimer : float
 var burstActive : bool = false
 var burstDirection : Vector2 = Vector2.ZERO
 var burstTimer : float = 0 # current amount of available burst
+@export var burstFlame : AnimatedSprite2D
 
 func _ready() -> void:
+	
 	#burst bar initial configs
 	burstBar.max_value = burstMaxDuration
 	burstTimer = burstMaxDuration # start full
@@ -35,7 +36,6 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	print(burstTimer)
 	# player sprite changes
 	speedLines.visible = velocity != Vector2.ZERO
 	if(velocity == Vector2.ZERO):
@@ -101,15 +101,32 @@ func StartBurst(direction : Vector2):
 	
 	disableWalkSFX = true
 	walkingSFX.stop()
+	
+	#animations and stuff
 	playerSprite.animation = "boost"
 	playerSprite.speed_scale = 1
+	
+	#burst flame
+	burstFlame.visible = true
+	burstFlame.self_modulate = Color.WHITE
+	burstFlame.animation = "init"
+	burstFlame.play()
+	
+	#speed config
 	burstActive = true
 	burstDirection = direction
-	
 	velocity = burstDirection * burstSpeed
+	
+	#music config
 	burstMusic = load("res://Media/Audio/Music/gasGasGas.mp3")
 	AudioSystem.PlaySound(load("res://Media/Audio/SFX/sonicBoost.mp3"), "SFX_Master", .1, 1, false)
 	burstMusic = AudioSystem.PlayMusic(burstMusic, .6, 1, true, burstMusicTimestamp)
+	
+	#play the looping burst flame
+	await burstFlame.animation_finished
+	burstFlame.animation = "loop"
+	burstFlame.play()
+	
 	
 
 func EndBurst():
@@ -120,7 +137,11 @@ func EndBurst():
 	#start the cooldown before the bar starts recharging
 	burstRechargeCooldownTimer = burstRechargeCooldown
 	
+	#keep the burst music where it was so it can be picked off where it left off later
 	burstMusicTimestamp = AudioSystem.StopAudio(burstMusic, true, 1)
+	
+	#await create_tween().tween_property(burstFlame, "self_modulate", Color.TRANSPARENT, 0.3).finished
+	burstFlame.visible = false
 
 
 func GetInput() -> Vector2:
@@ -131,10 +152,10 @@ func GetInput() -> Vector2:
 	if Input.is_action_pressed("ui_down"):
 		direction.y += 1
 	if Input.is_action_pressed("ui_left"):
-		playerSprite.flip_h = true
+		$Sprites.scale = Vector2(-1, 1)
 		direction.x -= 1
 	if Input.is_action_pressed("ui_right"):
-		playerSprite.flip_h = false
+		$Sprites.scale = Vector2(1, 1) #WARNING: may want to make this an @export reference instead!
 		direction.x += 1
 	
 	return direction.normalized()
