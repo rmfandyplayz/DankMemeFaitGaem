@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+
+
 @export var moveSpeed : float
 @export var acceleration : float
 @export var friction : float  # also how fast we decelerate
@@ -138,13 +140,17 @@ func EndBurst():
 	burstActive = false
 	disableWalkSFX = false
 	
+	# play the animaton for burst flame dissipation
+	burstFlame.animation = "end"
+	burstFlame.play()
+	
 	#start the cooldown before the bar starts recharging
 	burstRechargeCooldownTimer = burstRechargeCooldown
 	
 	#keep the burst music where it was so it can be picked off where it left off later
 	burstMusicTimestamp = AudioSystem.StopAudio(burstMusic, true, 1)
 	
-	#await create_tween().tween_property(burstFlame, "self_modulate", Color.TRANSPARENT, 0.3).finished
+	await burstFlame.animation_finished
 	burstFlame.visible = false
 
 

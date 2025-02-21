@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://couca6ih4wql4"]
+[gd_scene load_steps=27 format=3 uid="uid://couca6ih4wql4"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_mkxkn"]
 [ext_resource type="Material" uid="uid://bjfiyy7kntp5u" path="res://Shaders/SpeedLines.tres" id="2_ax7n0"]
@@ -6,9 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://w4ulkoieu020" path="res://Media/Sprites/Entities/Player/Idle_01.png" id="2_cbyse"]
 [ext_resource type="Texture2D" uid="uid://bmmktf2ysdn6m" path="res://Media/Sprites/Entities/Player/Idle_02.png" id="3_o2wjk"]
 [ext_resource type="Texture2D" uid="uid://fgx0qbhexwgg" path="res://Media/Sprites/Entities/Player/Boost_02.png" id="3_sp40u"]
+[ext_resource type="Texture2D" uid="uid://w85t7ugy6ol6" path="res://Media/Sprites/Entities/Player/Boost_Fire_End_0.png" id="3_sv0xe"]
+[ext_resource type="Texture2D" uid="uid://dprjvgg63wiuv" path="res://Media/Sprites/Entities/Player/Boost_Fire_End_1.png" id="4_8j11c"]
 [ext_resource type="Texture2D" uid="uid://cg448jr2pasoc" path="res://Media/Sprites/Entities/Player/Walk_01.png" id="4_gdxb4"]
+[ext_resource type="Texture2D" uid="uid://wnpi0tqfn6ka" path="res://Media/Sprites/Entities/Player/Boost_Fire_End_2.png" id="5_emjg5"]
 [ext_resource type="Texture2D" uid="uid://cglbk5ne1jsb8" path="res://Media/Sprites/Entities/Player/Walk_02.png" id="5_v3e5y"]
 [ext_resource type="Texture2D" uid="uid://dj1meo7gl633o" path="res://Media/Sprites/Entities/Player/Walk_03.png" id="6_ucs3v"]
+[ext_resource type="Texture2D" uid="uid://du6fec1iiatdb" path="res://Media/Sprites/Entities/Player/Boost_Fire_End_3.png" id="6_wgmym"]
 [ext_resource type="AudioStream" uid="uid://lheshvjgiy0v" path="res://Media/Audio/SFX/krabsWalk.mp3" id="9_tl2x1"]
 [ext_resource type="Texture2D" uid="uid://sjy17nhxhjb2" path="res://Media/Sprites/Entities/Player/Boost_Fire_Init_0.png" id="10_87g54"]
 [ext_resource type="Texture2D" uid="uid://c8kc04qax1ptw" path="res://Media/UI/Bar_Boost_Empty.png" id="11_0gtg8"]
@@ -22,6 +26,23 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rebbf"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sv0xe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8j11c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_emjg5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wgmym")
+}],
+"loop": false,
+"name": &"end",
+"speed": 15.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("10_87g54")
@@ -153,7 +174,7 @@ size_flags_horizontal = 4
 visible = false
 scale = Vector2(0.560484, 0.560484)
 sprite_frames = SubResource("SpriteFrames_rebbf")
-animation = &"init"
+animation = &"loop"
 offset = Vector2(-275, 10)
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="Sprites"]
