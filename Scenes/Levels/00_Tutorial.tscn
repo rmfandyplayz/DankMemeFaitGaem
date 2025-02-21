@@ -31,5 +31,6 @@ tile_set = SubResource("TileSet_xx8ce")
 [node name="Player" parent="." instance=ExtResource("2_57raj")]
 position = Vector2(0, 1)
 floor_block_on_wall = false
+burstMaxDuration = 15.0
 burstRechargeSpeed = 0.8
 burstRechargeCooldown = 1.7

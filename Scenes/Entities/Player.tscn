@@ -150,10 +150,10 @@ size_flags_horizontal = 4
 
 [node name="BurstFlame" type="AnimatedSprite2D" parent="Sprites"]
 visible = false
-position = Vector2(-174, 5)
 scale = Vector2(0.560484, 0.560484)
 sprite_frames = SubResource("SpriteFrames_rebbf")
 animation = &"init"
+offset = Vector2(-275, 10)
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="Sprites"]
 scale = Vector2(0.440433, 0.440433)

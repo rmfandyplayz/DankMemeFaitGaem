@@ -108,6 +108,14 @@ func StartBurst(direction : Vector2):
 	
 	#burst flame
 	burstFlame.visible = true
+	burstFlame.rotation_degrees = rad_to_deg(velocity.angle())
+	if(burstFlame.rotation_degrees >= -180 and burstFlame.rotation_degrees < -90 and burstFlame.rotation_degrees <= 180 and burstFlame.rotation_degrees > 90):
+		burstFlame.flip_v = true
+	else:
+		burstFlame.flip_v = false
+		
+	print(burstFlame.rotation_degrees)
+	print(rad_to_deg(velocity.angle()))
 	burstFlame.self_modulate = Color.WHITE
 	burstFlame.animation = "init"
 	burstFlame.play()
@@ -152,10 +160,10 @@ func GetInput() -> Vector2:
 	if Input.is_action_pressed("ui_down"):
 		direction.y += 1
 	if Input.is_action_pressed("ui_left"):
-		$Sprites.scale = Vector2(-1, 1)
+		playerSprite.flip_h = true
 		direction.x -= 1
 	if Input.is_action_pressed("ui_right"):
-		$Sprites.scale = Vector2(1, 1) #WARNING: may want to make this an @export reference instead!
+		playerSprite.flip_h = false 
 		direction.x += 1
 	
 	return direction.normalized()
