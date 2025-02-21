@@ -36,27 +36,27 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	# player sprite changes
-	speedLines.visible = velocity != Vector2.ZERO
-	if(velocity == Vector2.ZERO):
+	# player sprite changes based on movement
+	speedLines.visible = (velocity != Vector2.ZERO)
+	if(velocity == Vector2.ZERO): # for when the player isn't moving at all
 		playerSprite.animation = "idle"
 		playerSprite.speed_scale = 1 # reset animation FPS
 		walkingSFX.stop()
 		disableWalkSFX = false
-	elif(velocity != Vector2.ZERO and burstActive == false):
+	elif(velocity != Vector2.ZERO and burstActive == false): # for when the player is moving AND isn't bursting
 		playerSprite.animation = "walk"
 		var speedFactor = clamp(velocity.length() / moveSpeed, 0, 1) # this is a value between 0 and 1
-		playerSprite.speed_scale = lerp(minSpriteAnimationSpeed, maxSpriteAnimationSpeed, speedFactor) # adjust animation FPS
+		playerSprite.speed_scale = lerp(minSpriteAnimationSpeed, maxSpriteAnimationSpeed, speedFactor) # adjust animation speed
 		
 		if disableWalkSFX == false: 
 			walkingSFX.play()
 			disableWalkSFX = true
 
+	# change how intense the speed lines effect is
 	speedLines.material.set_shader_parameter("line_density", lerp(0.1, 0.7, clamp(velocity.length() / burstSpeed, 0, 1)))
 
 	# movement and burst
 	if(burstActive == true and velocity != Vector2.ZERO):
-		# burst movement
 		burstTimer -= delta
 
 		# update burst bar
@@ -109,13 +109,10 @@ func StartBurst(direction : Vector2):
 	#burst flame
 	burstFlame.visible = true
 	burstFlame.rotation_degrees = rad_to_deg(velocity.angle())
-	if(burstFlame.rotation_degrees >= -180 and burstFlame.rotation_degrees < -90 and burstFlame.rotation_degrees <= 180 and burstFlame.rotation_degrees > 90):
+	if((burstFlame.rotation_degrees >= -180 and burstFlame.rotation_degrees < -90) or (burstFlame.rotation_degrees <= 180 and burstFlame.rotation_degrees > 90)):
 		burstFlame.flip_v = true
 	else:
 		burstFlame.flip_v = false
-		
-	print(burstFlame.rotation_degrees)
-	print(rad_to_deg(velocity.angle()))
 	burstFlame.self_modulate = Color.WHITE
 	burstFlame.animation = "init"
 	burstFlame.play()
@@ -136,7 +133,6 @@ func StartBurst(direction : Vector2):
 	burstFlame.play()
 	
 	
-
 func EndBurst():
 	playerSprite.animation = "walk"
 	burstActive = false
