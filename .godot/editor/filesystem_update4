@@ -2,6 +2,4 @@ res://Scenes/Levels/00_Tutorial.tscn
 res://Shaders/SpeedLines.gdshader
 res://Shaders/SpeedLines.tres
 res://Scenes/Entities/Player.tscn
-res://_StuffINeedToShowKinney/ShowcaseScene.tscn
 res://Scripts/Player/Player.gd
-res://_StuffINeedToShowKinney/ShowcasePlayerScript.gd

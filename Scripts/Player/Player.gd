@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-
-
 @export var moveSpeed : float
 @export var acceleration : float
 @export var friction : float  # also how fast we decelerate
@@ -16,16 +14,23 @@ var disableWalkSFX : bool = false
 
 @export var burstSpeed : float
 @export var burstMaxDuration : float # in seconds
-@export var burstRechargeSpeed : float # how many seconds per second
-@export var burstRechargeCooldown : float # how long after using burst does it start recharging? (in seconds)
-var burstRechargeCooldownTimer : float
+@export var burstRechargeSpd : float # how many seconds per second
+# WARNING BRO SERIOUS WTF WHY DOES SPECIFICALLY "burstRechargeSpeed" CAUSE ISSUES.
+# I HAVE TO CHANGE THE FRICKEN STUPID VARAIBLE NAME AND IT FRICKEN WORKS
+# WHY THE ACTUAL #### THIS IS SO ####### STUPID
+@export var burstRechargeCd : float # how long after using burst does it start recharging? (in seconds)
+var burstRechargeCdTimer : float
 @export var burstBar : TextureProgressBar
 var burstActive : bool = false
 var burstDirection : Vector2 = Vector2.ZERO
 var burstTimer : float = 0 # current amount of available burst
 @export var burstFlame : AnimatedSprite2D
 
+
+
 func _ready() -> void:
+	print(burstRechargeSpd)
+	
 	
 	#burst bar initial configs
 	burstBar.max_value = burstMaxDuration
@@ -77,11 +82,15 @@ func _process(delta: float) -> void:
 	move_and_slide()
 	
 	if (burstActive == false):
-		if burstRechargeCooldownTimer > 0:
-			burstRechargeCooldownTimer -= delta
+		if burstRechargeCdTimer > 0:
+			burstRechargeCdTimer -= delta
 		elif burstTimer < burstMaxDuration:
-			burstTimer = min(burstTimer + burstRechargeSpeed * delta, burstMaxDuration)
+			print(burstRechargeSpd, " x ", delta)
+			print(burstRechargeSpd * delta)
+			burstTimer = min(burstTimer + (burstRechargeSpd * delta), burstMaxDuration)
 			burstBar.value = burstTimer
+			# 0.00666666666667 (60)
+			
 
 
 func MovePlayer(inputDirection : Vector2, delta : float):
@@ -145,7 +154,8 @@ func EndBurst():
 	burstFlame.play()
 	
 	#start the cooldown before the bar starts recharging
-	burstRechargeCooldownTimer = burstRechargeCooldown
+	burstRechargeCdTimer = burstRechargeCd
+	print("burst recharge cooldown timer: ", burstRechargeCdTimer)
 	
 	#keep the burst music where it was so it can be picked off where it left off later
 	burstMusicTimestamp = AudioSystem.StopAudio(burstMusic, true, 1)

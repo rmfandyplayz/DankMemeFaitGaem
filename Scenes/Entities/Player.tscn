@@ -130,7 +130,9 @@ maxSpriteAnimationSpeed = 2.25
 walkingSFX = NodePath("SFX/WalkingSFX")
 speedLines = NodePath("CameraDependentControls/SpeedLines")
 burstSpeed = 1700.0
-burstMaxDuration = 3.0
+burstMaxDuration = 10.0
+burstRechargeSpd = 0.5
+burstRechargeCd = 1.7
 burstBar = NodePath("Canvas/CanvasControl/BurstBar")
 burstFlame = NodePath("Sprites/BurstFlame")
 
