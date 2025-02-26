@@ -1,5 +1,10 @@
-res://Scenes/Levels/00_Tutorial.tscn
+res://Scenes/Entities/Player.tscn
 res://Shaders/SpeedLines.gdshader
 res://Shaders/SpeedLines.tres
-res://Scenes/Entities/Player.tscn
+res://_StuffINeedToShowKinney/ShowcaseScene.tscn
+res://Scripts/Entitites/BaseEntityAI.gd
+res://Scripts/Enemies/BaseEnemy.gd
+res://Scenes/Entities/Enemy_UgandaKnuckles.tscn
+res://Scenes/Levels/00_Tutorial.tscn
+res://Scripts/Enemies/Enemy_UgandaKnuckles.gd
 res://Scripts/Player/Player.gd

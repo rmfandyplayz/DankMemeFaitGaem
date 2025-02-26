@@ -85,8 +85,6 @@ func _process(delta: float) -> void:
 		if burstRechargeCdTimer > 0:
 			burstRechargeCdTimer -= delta
 		elif burstTimer < burstMaxDuration:
-			print(burstRechargeSpd, " x ", delta)
-			print(burstRechargeSpd * delta)
 			burstTimer = min(burstTimer + (burstRechargeSpd * delta), burstMaxDuration)
 			burstBar.value = burstTimer
 			# 0.00666666666667 (60)
@@ -179,3 +177,9 @@ func GetInput() -> Vector2:
 		direction.x += 1
 	
 	return direction.normalized()
+	
+	
+
+# utility functions used by other scripts (i.e. enemies so they know your pos)
+func GetPos():
+	return position

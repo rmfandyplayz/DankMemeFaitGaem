@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://cl2smetcd1g5k"]
+[gd_scene load_steps=9 format=4 uid="uid://cl2smetcd1g5k"]
 
 [ext_resource type="Texture2D" uid="uid://boxibhxjg4pr4" path="res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Walls.png" id="1_457sp"]
 [ext_resource type="PackedScene" uid="uid://c2wguj6bu8y1s" path="res://Scenes/Utility Scenes/AudioSystem.tscn" id="1_cd73a"]
 [ext_resource type="PackedScene" uid="uid://couca6ih4wql4" path="res://Scenes/Entities/Player.tscn" id="2_57raj"]
 [ext_resource type="Texture2D" uid="uid://bmx572cbdy1k6" path="res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Carpet.png" id="2_ie5i3"]
+[ext_resource type="PackedScene" uid="uid://bg7t4r6py1dmd" path="res://Scenes/Entities/Enemy_UgandaKnuckles.tscn" id="5_je4ep"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l8f1v"]
 texture = ExtResource("1_457sp")
@@ -31,3 +32,7 @@ tile_set = SubResource("TileSet_xx8ce")
 [node name="Player" parent="." instance=ExtResource("2_57raj")]
 position = Vector2(0, 1)
 floor_block_on_wall = false
+
+[node name="EnemyUgandaKnuckles" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_je4ep")]
+position = Vector2(619, 50)
+player = NodePath("../Player")
