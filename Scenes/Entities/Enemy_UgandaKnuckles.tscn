@@ -13,6 +13,7 @@ script = ExtResource("1_anai0")
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_mui3m")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
 position = Vector2(-6, -1.5)
 shape = SubResource("RectangleShape2D_m7847")
+debug_color = Color(0.93, 0.3441, 0.3441, 0.419608)

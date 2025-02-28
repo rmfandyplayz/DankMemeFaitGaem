@@ -30,9 +30,14 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAACrAAAAAAAAAAAAAABWAQAAAAAAAAA
 tile_set = SubResource("TileSet_xx8ce")
 
 [node name="Player" parent="." instance=ExtResource("2_57raj")]
+unique_name_in_owner = true
 position = Vector2(0, 1)
 floor_block_on_wall = false
 
-[node name="EnemyUgandaKnuckles" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_je4ep")]
-position = Vector2(619, 50)
-player = NodePath("../Player")
+[node name="EnemyUgandaKnuckles" parent="." instance=ExtResource("5_je4ep")]
+position = Vector2(1362, 17)
+rushSpeed = 900.0
+rushInterval = 3.0
+health = 50.0
+aiActivationRange = 1500.0
+aiDeactivationRange = 3000.0

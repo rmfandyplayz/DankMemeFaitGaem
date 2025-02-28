@@ -29,9 +29,6 @@ var burstTimer : float = 0 # current amount of available burst
 
 
 func _ready() -> void:
-	print(burstRechargeSpd)
-	
-	
 	#burst bar initial configs
 	burstBar.max_value = burstMaxDuration
 	burstTimer = burstMaxDuration # start full
@@ -153,7 +150,6 @@ func EndBurst():
 	
 	#start the cooldown before the bar starts recharging
 	burstRechargeCdTimer = burstRechargeCd
-	print("burst recharge cooldown timer: ", burstRechargeCdTimer)
 	
 	#keep the burst music where it was so it can be picked off where it left off later
 	burstMusicTimestamp = AudioSystem.StopAudio(burstMusic, true, 1)
