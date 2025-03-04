@@ -1,7 +1,7 @@
-res://_StuffINeedToShowKinney/ShowcaseScene.tscn
+res://Scenes/Levels/00_Tutorial.tscn
+res://Shaders/SpeedLines.gdshader
+res://Shaders/SpeedLines.tres
 res://Scenes/Entities/Enemy_UgandaKnuckles.tscn
 res://Scenes/Entities/Player.tscn
-res://Scenes/Environment Elements/MovingPlatform.tscn
-res://Scenes/Levels/00_Tutorial.tscn
-res://Scenes/Utility Scenes/AudioSystem.tscn
-res://Testing/Test.tscn
+res://Scripts/Enemies/Enemy_UgandaKnuckles.gd
+res://Scripts/Enemies/BaseEnemy.gd

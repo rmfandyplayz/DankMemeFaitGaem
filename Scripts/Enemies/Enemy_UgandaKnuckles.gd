@@ -11,10 +11,14 @@ enum BehaviorTreeNode {
 # configuration stuff
 @export var rushSpeed : float
 @export var rushInterval : float
+@export var rushDuration : float # how many seconds will the enemy rush before stopping?
+#                     ^^^   that or the enemy collides with something first.
 
 # internal stuff
-var timer : float = 0 # in this scenario, keeps track of time between each rush
-var rushDirection : Vector2
+var waitTimer : float = 0 # keeps track of time between each rush
+var rushTimer : float = 0 # keeps track of time DURING each rush
+var rushVelocity : Vector2
+var rushVelocityAlreadySet : bool = false
 var isRushing : bool = false
 
 
@@ -25,7 +29,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if ActivationRangeNode() == true:
 		BehaviorTree(delta)
-	
+
+
 # determines if the AI is activated via range
 func ActivationRangeNode() -> bool: 
 	var distToPlayer : float = position.distance_to(player.position)
@@ -39,38 +44,39 @@ func ActivationRangeNode() -> bool:
 	
 	return isAiActivated
 	
-
+	
+# main behavior tree that manages all AI for this enemy
 func BehaviorTree(delta : float) -> void:
 	if WaitNode(delta) == BehaviorTreeNode.SUCCESS: #rush if success
-		print("true")
+		print("BehaviorTree SUCCESS")
 		if RushNode(delta) == BehaviorTreeNode.SUCCESS:
 			print("rush node success, isrushing disabled")
 			isRushing = false
-			print(isRushing)
+			waitTimer = 0
+			rushTimer = 0
+			rushVelocityAlreadySet = false
 
 
 # counts time between each attack
 func WaitNode(delta : float):
-	if(isRushing == false):
-		timer += delta
-	if timer >= rushInterval:
-		timer = 0
-		print("wait node success")
+	if(isRushing == false and waitTimer <= rushInterval):
+		waitTimer += delta
+		return BehaviorTreeNode.RUNNING
+	if waitTimer >= rushInterval: # return the success and start rushing
+		isRushing = true
+		if(rushVelocityAlreadySet == false):
+			rushVelocity = position.direction_to(player.position) * rushSpeed
+			rushVelocityAlreadySet = true
+		print("rush velocity set")
 		return BehaviorTreeNode.SUCCESS
-	print("wait node running")
-	return BehaviorTreeNode.RUNNING
 
 
 # move straight until u collide with something
 func RushNode(delta : float) -> BehaviorTreeNode:
-	isRushing = true
-	var rushVelocity : Vector2 = position.direction_to(player.position) * rushSpeed
-	print("rush velocity: ", rushVelocity)
 	var collision = move_and_collide(rushVelocity * delta)
-	print("rushing")
-	if collision:
-		print("collision: ", collision)
+	if collision or rushTimer >= rushDuration: 
 		print("finished rushing")
 		return BehaviorTreeNode.SUCCESS
 	
+	rushTimer += delta
 	return BehaviorTreeNode.RUNNING

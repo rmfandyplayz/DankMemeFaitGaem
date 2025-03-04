@@ -1,7 +1,8 @@
-extends CharacterBody2D
+extends StaticBody2D
 class_name BaseEnemy
 
 # shared variables that is common through all enemies
+# (kinda like an abstract class lol)
 
 @export var health : float
 @export var aiActivationRange : float

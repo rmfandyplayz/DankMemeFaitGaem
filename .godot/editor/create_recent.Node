@@ -1,7 +1,8 @@
-CollisionShape2D
-CharacterBody2D
 StaticBody2D
+Area2D
+CollisionShape2D
 Node2D
+CharacterBody2D
 Camera2D
 RigidBody2D
 Sprite2D
@@ -11,4 +12,3 @@ GraphEdit
 Control
 CanvasLayer
 AnimatableBody2D
-Node
