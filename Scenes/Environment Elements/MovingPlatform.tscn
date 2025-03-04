@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://x5hdoqt31bs5"]
 
 [ext_resource type="Texture2D" uid="uid://bypiqjvcca5jt" path="res://Media/Sprites/Environment/MovePlatform_NyanCat.png" id="1_ebm07"]
-[ext_resource type="Script" path="res://Scripts/Environment Elements/MovingPlatform.gd" id="1_j1e6d"]
+[ext_resource type="Script" uid="uid://d0k803tu8a5bm" path="res://Scripts/Environment Elements/MovingPlatform.gd" id="1_j1e6d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g3kxq"]
 atlas = ExtResource("1_ebm07")

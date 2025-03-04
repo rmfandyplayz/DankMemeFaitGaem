@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d0866nyevdsux"]
 
 [ext_resource type="Texture2D" uid="uid://hrge33qjtbxf" path="res://Media/Sprites/Weapons/Troll_0.png" id="1_i2gty"]
-[ext_resource type="Script" path="res://_StuffINeedToShowKinney/ShowcasePlayerScript.gd" id="2_anpmn"]
+[ext_resource type="Script" uid="uid://lpycf2h0liqw" path="res://_StuffINeedToShowKinney/ShowcasePlayerScript.gd" id="2_anpmn"]
 [ext_resource type="Texture2D" uid="uid://kifdmkr6pstc" path="res://Media/Sprites/Environment/Grass.jpg" id="3_lmcey"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqmy6"]
