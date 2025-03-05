@@ -1,17 +1,23 @@
 extends CharacterBody2D
 
+# basic movement properties
 @export var moveSpeed : float
 @export var acceleration : float
 @export var friction : float  # also how fast we decelerate
 
+# sprites, animations, etc
 @export var playerSprite : AnimatedSprite2D
 @export var minSpriteAnimationSpeed : float = 0.75
 @export var maxSpriteAnimationSpeed : float = 3.0
 
+# music / SFX
 @export var walkingSFX : AudioStreamPlayer2D
 var disableWalkSFX : bool = false
+
+# controls
 @export var speedLines : ColorRect
 
+# all things related to the burst mechanic
 @export var burstSpeed : float
 @export var burstMaxDuration : float # in seconds
 @export var burstRechargeSpd : float # how many seconds per second
@@ -26,13 +32,14 @@ var burstDirection : Vector2 = Vector2.ZERO
 var burstTimer : float = 0 # current amount of available burst
 @export var burstFlame : AnimatedSprite2D
 
+@export var collisionDetector : Area2D
 
 
 func _ready() -> void:
 	#burst bar initial configs
 	burstBar.max_value = burstMaxDuration
 	burstTimer = burstMaxDuration # start full
-	burstBar	.value = burstTimer
+	burstBar.value = burstTimer
 
 	#player sprite animation config
 	playerSprite.animation = "idle"
@@ -87,6 +94,12 @@ func _process(delta: float) -> void:
 			# 0.00666666666667 (60)
 			
 
+# signal - from Player/CollisionDetector.
+# equivalent of OnCollisionEnter2D and such from Unity. does something when collision happens
+func _on_body_entered(body: Node2D) -> void:
+	if(body.is_in_group("StopsBurst")):
+		EndBurst()
+	
 
 func MovePlayer(inputDirection : Vector2, delta : float):
 	if(inputDirection != Vector2.ZERO): 

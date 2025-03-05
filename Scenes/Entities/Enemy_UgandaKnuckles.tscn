@@ -4,16 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://b2ti0bnanbie3" path="res://Media/Sprites/Entities/Enemies/Enemy_UgandaKnuckles/knuckles.png" id="1_mui3m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m7847"]
-size = Vector2(91, 120)
+size = Vector2(134, 120)
 
-[node name="EnemyUgandaKnuckles" type="StaticBody2D"]
+[node name="EnemyUgandaKnuckles" type="StaticBody2D" groups=["StopsBurst"]]
 script = ExtResource("1_anai0")
 
 [node name="Knuckles" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_mui3m")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
-position = Vector2(-3.5, 0)
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_m7847")
-debug_color = Color(0.93, 0.3441, 0.3441, 0.419608)

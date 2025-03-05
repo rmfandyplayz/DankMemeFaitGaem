@@ -30,10 +30,10 @@ metadata/_edit_lock_ = true
 
 [node name="WallCollisions" type="Node2D" parent="."]
 
-[node name="MainWallCollision" type="StaticBody2D" parent="WallCollisions"]
+[node name="MainWallCollision" type="StaticBody2D" parent="WallCollisions" groups=["StopsBurst"]]
 position = Vector2(0, -530)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCollisions/MainWallCollision"]
+[node name="WallCollider00" type="CollisionShape2D" parent="WallCollisions/MainWallCollision" groups=["StopsBurst"]]
 position = Vector2(4124.5, -109)
 shape = SubResource("RectangleShape2D_iv4qu")
 
@@ -43,12 +43,12 @@ tile_set = SubResource("TileSet_xx8ce")
 
 [node name="Player" parent="." instance=ExtResource("2_57raj")]
 unique_name_in_owner = true
-position = Vector2(0, 1)
+position = Vector2(0, 941)
 floor_block_on_wall = false
 platform_wall_layers = 1
 
 [node name="EnemyUgandaKnuckles" parent="." instance=ExtResource("5_je4ep")]
-position = Vector2(1362, 17)
+position = Vector2(1924, 17)
 rushSpeed = 900.0
 rushInterval = 3.0
 rushDuration = 1.0

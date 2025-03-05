@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://couca6ih4wql4"]
+[gd_scene load_steps=28 format=3 uid="uid://couca6ih4wql4"]
 
 [ext_resource type="Script" uid="uid://chy5f30nb8ujk" path="res://Scripts/Player/Player.gd" id="1_mkxkn"]
 [ext_resource type="Material" uid="uid://bjfiyy7kntp5u" path="res://Shaders/SpeedLines.tres" id="2_ax7n0"]
@@ -23,6 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://mt41g5itjkfb" path="res://Media/Sprites/Entities/Player/Boost_Fire_Loop_1.png" id="14_lm8kc"]
 [ext_resource type="Texture2D" uid="uid://blur4twiadbhs" path="res://Media/Sprites/Entities/Player/Boost_Fire_Loop_2.png" id="15_0q4i0"]
 [ext_resource type="Texture2D" uid="uid://cxh0pdrtxfpyo" path="res://Media/Sprites/Entities/Player/Boost_Fire_Loop_3.png" id="16_cfr63"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fq4iy"]
+size = Vector2(54, 157)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rebbf"]
 animations = [{
@@ -117,10 +120,10 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fq4iy"]
-size = Vector2(56, 155)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0aity"]
+size = Vector2(58, 161)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("playerSprite", "walkingSFX", "speedLines", "burstBar", "burstFlame")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("playerSprite", "walkingSFX", "speedLines", "burstBar", "burstFlame", "collisionDetector")]
 script = ExtResource("1_mkxkn")
 moveSpeed = 900.0
 acceleration = 2000.0
@@ -133,8 +136,14 @@ burstSpeed = 1700.0
 burstMaxDuration = 3.0
 burstRechargeSpd = 0.5
 burstRechargeCd = 1.7
-burstBar = NodePath("Canvas/CanvasControl/BurstBar")
+burstBar = NodePath("Canvas/CanvasControls/BurstBar")
 burstFlame = NodePath("Sprites/BurstFlame")
+collisionDetector = NodePath("CollisionDetector")
+
+[node name="MainCollider" type="CollisionShape2D" parent="."]
+position = Vector2(-12, 0.5)
+shape = SubResource("RectangleShape2D_fq4iy")
+debug_color = Color(0.166667, 0, 1, 0.631373)
 
 [node name="Camera" type="Camera2D" parent="."]
 position_smoothing_enabled = true
@@ -184,9 +193,12 @@ scale = Vector2(0.440433, 0.440433)
 sprite_frames = SubResource("SpriteFrames_nuque")
 animation = &"idle"
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="CollisionDetector" type="Area2D" parent="."]
+
+[node name="DetectorCollider" type="CollisionShape2D" parent="CollisionDetector"]
 position = Vector2(-12, 0.5)
-shape = SubResource("RectangleShape2D_fq4iy")
+shape = SubResource("RectangleShape2D_0aity")
+debug_color = Color(0.757167, 0.77, 0, 0.470588)
 
 [node name="SFX" type="Node2D" parent="."]
 
@@ -198,7 +210,7 @@ bus = &"SFX_Master"
 [node name="Canvas" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="CanvasControl" type="Control" parent="Canvas"]
+[node name="CanvasControls" type="Control" parent="Canvas"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -207,7 +219,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="BurstBar" type="TextureProgressBar" parent="Canvas/CanvasControl"]
+[node name="BurstBar" type="TextureProgressBar" parent="Canvas/CanvasControls"]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
@@ -218,3 +230,5 @@ nine_patch_stretch = true
 texture_over = ExtResource("11_0gtg8")
 texture_progress = ExtResource("12_4ntq1")
 texture_progress_offset = Vector2(-12, -3)
+
+[connection signal="body_entered" from="CollisionDetector" to="." method="_on_body_entered"]

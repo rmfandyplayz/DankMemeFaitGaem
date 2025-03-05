@@ -36,10 +36,8 @@ func ActivationRangeNode() -> bool:
 	var distToPlayer : float = position.distance_to(player.position)
 	
 	if(isAiActivated == false and distToPlayer <= aiActivationRange):
-		print("ai activated")
 		isAiActivated = true
 	elif(isAiActivated == true and aiActivationRange != -1 and distToPlayer > aiDeactivationRange):
-		print("ai NOT activated")
 		isAiActivated = false
 	
 	return isAiActivated
@@ -48,9 +46,7 @@ func ActivationRangeNode() -> bool:
 # main behavior tree that manages all AI for this enemy
 func BehaviorTree(delta : float) -> void:
 	if WaitNode(delta) == BehaviorTreeNode.SUCCESS: #rush if success
-		print("BehaviorTree SUCCESS")
 		if RushNode(delta) == BehaviorTreeNode.SUCCESS:
-			print("rush node success, isrushing disabled")
 			isRushing = false
 			waitTimer = 0
 			rushTimer = 0
@@ -67,7 +63,6 @@ func WaitNode(delta : float):
 		if(rushVelocityAlreadySet == false):
 			rushVelocity = position.direction_to(player.position) * rushSpeed
 			rushVelocityAlreadySet = true
-		print("rush velocity set")
 		return BehaviorTreeNode.SUCCESS
 
 
@@ -75,7 +70,6 @@ func WaitNode(delta : float):
 func RushNode(delta : float) -> BehaviorTreeNode:
 	var collision = move_and_collide(rushVelocity * delta)
 	if collision or rushTimer >= rushDuration: 
-		print("finished rushing")
 		return BehaviorTreeNode.SUCCESS
 	
 	rushTimer += delta

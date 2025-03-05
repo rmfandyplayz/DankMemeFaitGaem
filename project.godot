@@ -43,6 +43,10 @@ folder_colors={
 "res://Shaders/": "blue"
 }
 
+[global_group]
+
+StopsBurst="whether or not player's burst should be stopped when colliding with this object."
+
 [input]
 
 ui_left={
