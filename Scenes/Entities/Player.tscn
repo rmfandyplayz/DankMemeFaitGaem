@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://couca6ih4wql4"]
+[gd_scene load_steps=30 format=3 uid="uid://couca6ih4wql4"]
 
 [ext_resource type="Script" uid="uid://chy5f30nb8ujk" path="res://Scripts/Player/Player.gd" id="1_mkxkn"]
 [ext_resource type="Material" uid="uid://bjfiyy7kntp5u" path="res://Shaders/SpeedLines.tres" id="2_ax7n0"]
@@ -23,6 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://mt41g5itjkfb" path="res://Media/Sprites/Entities/Player/Boost_Fire_Loop_1.png" id="14_lm8kc"]
 [ext_resource type="Texture2D" uid="uid://blur4twiadbhs" path="res://Media/Sprites/Entities/Player/Boost_Fire_Loop_2.png" id="15_0q4i0"]
 [ext_resource type="Texture2D" uid="uid://cxh0pdrtxfpyo" path="res://Media/Sprites/Entities/Player/Boost_Fire_Loop_3.png" id="16_cfr63"]
+[ext_resource type="Texture2D" uid="uid://kwj1oxjlbccl" path="res://Media/UI/Bar_HealthEmpty.png" id="24_t6xah"]
+[ext_resource type="Texture2D" uid="uid://tboukxyhrgle" path="res://Media/UI/Bar_HealthFill.png" id="25_yheof"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fq4iy"]
 size = Vector2(54, 157)
@@ -123,8 +125,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0aity"]
 size = Vector2(58, 161)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("playerSprite", "walkingSFX", "speedLines", "burstBar", "burstFlame", "collisionDetector")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("healthBar", "playerSprite", "walkingSFX", "speedLines", "burstBar", "burstFlame", "collisionDetector")]
 script = ExtResource("1_mkxkn")
+maxHealth = 419.0
+healthBar = NodePath("Canvas/CanvasControls/HealthBar")
 moveSpeed = 900.0
 acceleration = 2000.0
 friction = 900.0
@@ -217,18 +221,40 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_lock_ = true
 
 [node name="BurstBar" type="TextureProgressBar" parent="Canvas/CanvasControls"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 258.0
-offset_bottom = 96.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -268.0
+offset_top = -106.0
+offset_right = -30.0
+offset_bottom = -30.0
+grow_horizontal = 0
+grow_vertical = 0
 step = 0.01
 nine_patch_stretch = true
 texture_over = ExtResource("11_0gtg8")
 texture_progress = ExtResource("12_4ntq1")
 texture_progress_offset = Vector2(-12, -3)
+
+[node name="HealthBar" type="TextureProgressBar" parent="Canvas/CanvasControls"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -106.0
+offset_right = 485.0
+offset_bottom = -30.0
+grow_vertical = 0
+step = 0.01
+value = 50.0
+nine_patch_stretch = true
+texture_over = ExtResource("24_t6xah")
+texture_progress = ExtResource("25_yheof")
 
 [connection signal="body_entered" from="CollisionDetector" to="." method="_on_body_entered"]

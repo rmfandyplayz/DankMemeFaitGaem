@@ -76,8 +76,13 @@ func StopAudio(audioPlayer: AudioStreamPlayer, fade: bool = false, fadeTime: flo
 	if fade and fadeTime > 0:
 		var tween = create_tween()
 		tween.tween_property(audioPlayer, "volume_db", -80, fadeTime)
-		# tween.connect("tween_all_completed", _OnFadeCompleted.bind(audioPlayer, tween))
-		# TODO implement later????
+		var fadeTimer = Timer.new()
+		fadeTimer.one_shot = true
+		fadeTimer.wait_time = fadeTime
+		fadeTimer.connect("timeout", _OnFadeCompleted.bind(audioPlayer, tween, fadeTimer))
+		add_child(fadeTimer)
+		fadeTimer.start()
+		_audioTimers[audioPlayer] = fadeTimer
 	else:
 		audioPlayer.get_playback_position()
 		audioPlayer.stop()
@@ -87,7 +92,7 @@ func StopAudio(audioPlayer: AudioStreamPlayer, fade: bool = false, fadeTime: flo
 	return audioPlayer.get_playback_position()
 
 # called when a non looping audio finishes playing
-func _OnAudioFinished(audioPlayer: AudioStreamPlayer, timer: Timer) -> void:
+func _OnAudioFinished(audioPlayer : AudioStreamPlayer, timer : Timer) -> void:
 	if _audioTimers.has(audioPlayer):
 		_audioTimers.erase(audioPlayer)
 	if is_instance_valid(audioPlayer):
@@ -97,10 +102,16 @@ func _OnAudioFinished(audioPlayer: AudioStreamPlayer, timer: Timer) -> void:
 		timer.queue_free()
 
 # called when audio finishes fading
-func _OnFadeCompleted(audioPlayer: AudioStreamPlayer, tween: Tween) -> void:
-	if is_instance_valid(tween):
-		tween.queue_free()
+func _OnFadeCompleted(audioPlayer : AudioStreamPlayer, tween : Tween, timer : Timer) -> void:
+	#print(tween)
+	#if(tween != null and is_instance_valid(tween)):
+		#print(tween)
+		#tween.queue_free()
+	if(_audioTimers.has(audioPlayer)):
+		_audioTimers.erase(audioPlayer)
 	if is_instance_valid(audioPlayer):
 		audioPlayer.stop()
 		emit_signal("AudioFinished", audioPlayer)
 		audioPlayer.queue_free()
+	if is_instance_valid(timer):
+		timer.queue_free()

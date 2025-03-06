@@ -43,7 +43,6 @@ tile_set = SubResource("TileSet_xx8ce")
 
 [node name="Player" parent="." instance=ExtResource("2_57raj")]
 unique_name_in_owner = true
-position = Vector2(0, 941)
 floor_block_on_wall = false
 platform_wall_layers = 1
 

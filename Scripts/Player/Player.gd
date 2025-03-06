@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
-# basic movement properties
+# basic properties
+@export var currentHealth : float
+@export var maxHealth : float
+@export var healthBar : TextureProgressBar
 @export var moveSpeed : float
 @export var acceleration : float
 @export var friction : float  # also how fast we decelerate
@@ -13,6 +16,7 @@ extends CharacterBody2D
 # music / SFX
 @export var walkingSFX : AudioStreamPlayer2D
 var disableWalkSFX : bool = false
+
 
 # controls
 @export var speedLines : ColorRect
@@ -34,12 +38,16 @@ var burstTimer : float = 0 # current amount of available burst
 
 @export var collisionDetector : Area2D
 
-
 func _ready() -> void:
 	#burst bar initial configs
 	burstBar.max_value = burstMaxDuration
-	burstTimer = burstMaxDuration # start full
 	burstBar.value = burstTimer
+	burstTimer = burstMaxDuration # start full
+	
+	#health-related configs
+	healthBar.max_value = maxHealth
+	SetHP(maxHealth / 2)
+	
 
 	#player sprite animation config
 	playerSprite.animation = "idle"
@@ -72,7 +80,6 @@ func _process(delta: float) -> void:
 
 		# update burst bar
 		burstBar.value = burstTimer 
-		
 		if(burstTimer <= 0 or Input.is_action_pressed("Player_Burst") == false):
 			EndBurst()
 	else:
@@ -91,7 +98,6 @@ func _process(delta: float) -> void:
 		elif burstTimer < burstMaxDuration:
 			burstTimer = min(burstTimer + (burstRechargeSpd * delta), burstMaxDuration)
 			burstBar.value = burstTimer
-			# 0.00666666666667 (60)
 			
 
 # signal - from Player/CollisionDetector.
@@ -164,13 +170,33 @@ func EndBurst():
 	#start the cooldown before the bar starts recharging
 	burstRechargeCdTimer = burstRechargeCd
 	
-	#keep the burst music where it was so it can be picked off where it left off later
-	burstMusicTimestamp = AudioSystem.StopAudio(burstMusic, true, 1)
-	
 	await burstFlame.animation_finished
 	burstFlame.visible = false
+	
+	#keep the burst music where it was so it can be picked off where it left off later
+	if(is_instance_valid(burstMusic)):
+		burstMusicTimestamp = await AudioSystem.StopAudio(burstMusic, true, 1)
 
 
+# all of the below HP functions share similar features
+# they change the hp value in the code, and updates the bars
+# also plays effects, sounds, and runs other logic.
+
+func AddHP(hpAddValue : float):
+	currentHealth += hpAddValue
+	healthBar.value = currentHealth
+	
+func SubtractHP(hpSubtractValue : float):
+	currentHealth -= hpSubtractValue
+	healthBar.value = currentHealth
+	
+func SetHP(newHpValue : float):
+	currentHealth = newHpValue
+	healthBar.value = currentHealth
+
+
+
+# utility function for input handling
 func GetInput() -> Vector2:
 	var direction: Vector2 = Vector2.ZERO
 	
