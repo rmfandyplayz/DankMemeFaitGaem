@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var currentHealth : float
 @export var maxHealth : float
 @export var healthBar : TextureProgressBar
+@export var healthText : RichTextLabel
 @export var moveSpeed : float
 @export var acceleration : float
 @export var friction : float  # also how fast we decelerate
@@ -41,12 +42,12 @@ var burstTimer : float = 0 # current amount of available burst
 func _ready() -> void:
 	#burst bar initial configs
 	burstBar.max_value = burstMaxDuration
-	burstBar.value = burstTimer
 	burstTimer = burstMaxDuration # start full
+	burstBar.value = burstTimer
 	
 	#health-related configs
 	healthBar.max_value = maxHealth
-	SetHP(maxHealth / 2)
+	SetHP(maxHealth)
 	
 
 	#player sprite animation config
@@ -184,15 +185,32 @@ func EndBurst():
 
 func AddHP(hpAddValue : float):
 	currentHealth += hpAddValue
-	healthBar.value = currentHealth
+	UpdateHealthUI()
+	
+	if(currentHealth <= 0):
+		Die()
 	
 func SubtractHP(hpSubtractValue : float):
 	currentHealth -= hpSubtractValue
-	healthBar.value = currentHealth
+	UpdateHealthUI()
+	
+	if(currentHealth <= 0):
+		Die()
 	
 func SetHP(newHpValue : float):
 	currentHealth = newHpValue
+	UpdateHealthUI()
+	
+	if(currentHealth <= 0):
+		Die()
+		
+# updates all helath things that are ui-related
+func UpdateHealthUI():
 	healthBar.value = currentHealth
+	healthText.text = "[outline_size=12][font_size=50] [b]{currentHP}[/b] [font_size=30][color=#ffffff99]/ {maxHP}".format({
+		"currentHP" : int(currentHealth),
+		"maxHP" : int(maxHealth)
+	})
 
 
 
@@ -213,7 +231,10 @@ func GetInput() -> Vector2:
 	
 	return direction.normalized()
 	
-	
+
+# runs logic for player death
+func Die():
+	get_tree().reload_current_scene()
 
 # utility functions used by other scripts (i.e. enemies so they know your pos)
 func GetPos():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://couca6ih4wql4"]
+[gd_scene load_steps=34 format=3 uid="uid://couca6ih4wql4"]
 
 [ext_resource type="Script" uid="uid://chy5f30nb8ujk" path="res://Scripts/Player/Player.gd" id="1_mkxkn"]
 [ext_resource type="Material" uid="uid://bjfiyy7kntp5u" path="res://Shaders/SpeedLines.tres" id="2_ax7n0"]
@@ -25,6 +25,10 @@
 [ext_resource type="Texture2D" uid="uid://cxh0pdrtxfpyo" path="res://Media/Sprites/Entities/Player/Boost_Fire_Loop_3.png" id="16_cfr63"]
 [ext_resource type="Texture2D" uid="uid://kwj1oxjlbccl" path="res://Media/UI/Bar_HealthEmpty.png" id="24_t6xah"]
 [ext_resource type="Texture2D" uid="uid://tboukxyhrgle" path="res://Media/UI/Bar_HealthFill.png" id="25_yheof"]
+[ext_resource type="FontFile" uid="uid://ci747jjckt6ey" path="res://Media/Fonts/Comic Sans/ComicSansMS.ttf" id="26_xggc7"]
+[ext_resource type="FontFile" uid="uid://6rnrffvnoabi" path="res://Media/Fonts/Comic Sans/ComicSansMS-Italic.ttf" id="27_rhvgf"]
+[ext_resource type="FontFile" uid="uid://7nvftafso3jy" path="res://Media/Fonts/Comic Sans/ComicSansMS-BoldItalic.ttf" id="28_abqr1"]
+[ext_resource type="FontFile" uid="uid://dhkcjmpqgiovf" path="res://Media/Fonts/Comic Sans/ComicSansMS-Bold.ttf" id="29_rbvjg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fq4iy"]
 size = Vector2(54, 157)
@@ -125,10 +129,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0aity"]
 size = Vector2(58, 161)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("healthBar", "playerSprite", "walkingSFX", "speedLines", "burstBar", "burstFlame", "collisionDetector")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("healthBar", "healthText", "playerSprite", "walkingSFX", "speedLines", "burstBar", "burstFlame", "collisionDetector")]
 script = ExtResource("1_mkxkn")
 maxHealth = 419.0
 healthBar = NodePath("Canvas/CanvasControls/HealthBar")
+healthText = NodePath("Canvas/CanvasControls/HealthBar/HealthText")
 moveSpeed = 900.0
 acceleration = 2000.0
 friction = 900.0
@@ -256,5 +261,20 @@ value = 50.0
 nine_patch_stretch = true
 texture_over = ExtResource("24_t6xah")
 texture_progress = ExtResource("25_yheof")
+
+[node name="HealthText" type="RichTextLabel" parent="Canvas/CanvasControls/HealthBar"]
+layout_mode = 0
+offset_left = 473.0
+offset_right = 813.0
+offset_bottom = 76.0
+theme_override_fonts/normal_font = ExtResource("26_xggc7")
+theme_override_fonts/italics_font = ExtResource("27_rhvgf")
+theme_override_fonts/bold_italics_font = ExtResource("28_abqr1")
+theme_override_fonts/bold_font = ExtResource("29_rbvjg")
+bbcode_enabled = true
+text = "[outline_size=12][font_size=50] [b]419[/b] [font_size=30][color=#ffffff99]/ 419"
+scroll_active = false
+shortcut_keys_enabled = false
+vertical_alignment = 1
 
 [connection signal="body_entered" from="CollisionDetector" to="." method="_on_body_entered"]

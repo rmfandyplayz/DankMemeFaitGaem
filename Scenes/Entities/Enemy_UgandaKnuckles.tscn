@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bg7t4r6py1dmd"]
+[gd_scene load_steps=5 format=3 uid="uid://bg7t4r6py1dmd"]
 
 [ext_resource type="Script" uid="uid://3futn3kou32f" path="res://Scripts/Enemies/Enemy_UgandaKnuckles.gd" id="1_anai0"]
 [ext_resource type="Texture2D" uid="uid://b2ti0bnanbie3" path="res://Media/Sprites/Entities/Enemies/Enemy_UgandaKnuckles/knuckles.png" id="1_mui3m"]
@@ -6,8 +6,19 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m7847"]
 size = Vector2(134, 120)
 
-[node name="EnemyUgandaKnuckles" type="StaticBody2D" groups=["StopsBurst"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7m8jb"]
+size = Vector2(136, 122)
+
+[node name="EnemyUgandaKnuckles" type="StaticBody2D" node_paths=PackedStringArray("hurtbox") groups=["StopsBurst"]]
 script = ExtResource("1_anai0")
+rushSpeed = 1350.0
+rushInterval = 3.0
+rushDuration = 1.5
+damage = 57.0
+hurtbox = NodePath("Hurtbox")
+health = 100.0
+aiActivationRange = 2200.0
+aiDeactivationRange = 3600.0
 
 [node name="Knuckles" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
@@ -16,3 +27,12 @@ texture = ExtResource("1_mui3m")
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_m7847")
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["DamageSource"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_7m8jb")
+debug_color = Color(0.74, 0, 0, 0.419608)
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

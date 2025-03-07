@@ -13,6 +13,10 @@ enum BehaviorTreeNode {
 @export var rushInterval : float
 @export var rushDuration : float # how many seconds will the enemy rush before stopping?
 #                     ^^^   that or the enemy collides with something first.
+@export var damage : float
+@export var hurtbox : Area2D
+@export var pushForce : float # how much will the player be pushed on damage?
+
 
 # internal stuff
 var waitTimer : float = 0 # keeps track of time between each rush
@@ -46,11 +50,15 @@ func ActivationRangeNode() -> bool:
 # main behavior tree that manages all AI for this enemy
 func BehaviorTree(delta : float) -> void:
 	if WaitNode(delta) == BehaviorTreeNode.SUCCESS: #rush if success
+		ActivateHurtbox()
 		if RushNode(delta) == BehaviorTreeNode.SUCCESS:
 			isRushing = false
 			waitTimer = 0
 			rushTimer = 0
 			rushVelocityAlreadySet = false
+			await get_tree().create_timer(.15).timeout
+			DeactivateHurtbox()
+			
 
 
 # counts time between each attack
@@ -69,8 +77,25 @@ func WaitNode(delta : float):
 # move straight until u collide with something
 func RushNode(delta : float) -> BehaviorTreeNode:
 	var collision = move_and_collide(rushVelocity * delta)
+	
 	if collision or rushTimer >= rushDuration: 
 		return BehaviorTreeNode.SUCCESS
 	
 	rushTimer += delta
 	return BehaviorTreeNode.RUNNING
+
+# applies logic when enemy hits player
+func _on_hurtbox_body_entered(body: Node2D) -> void:
+	if(body == player):
+		DealDamage(damage)
+		
+
+func DealDamage(damageToDeal : float):
+	player.SubtractHP(damageToDeal)
+
+
+func ActivateHurtbox():
+	hurtbox.monitoring = true
+	
+func DeactivateHurtbox():
+	hurtbox.monitoring = false

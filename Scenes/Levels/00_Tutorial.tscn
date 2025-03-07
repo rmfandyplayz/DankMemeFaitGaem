@@ -45,12 +45,7 @@ tile_set = SubResource("TileSet_xx8ce")
 unique_name_in_owner = true
 floor_block_on_wall = false
 platform_wall_layers = 1
+burstRechargeSpd = 0.68
 
 [node name="EnemyUgandaKnuckles" parent="." instance=ExtResource("5_je4ep")]
-position = Vector2(1924, 17)
-rushSpeed = 900.0
-rushInterval = 3.0
-rushDuration = 1.0
-health = 50.0
-aiActivationRange = 750.0
-aiDeactivationRange = 1250.0
+position = Vector2(1908, 206)
