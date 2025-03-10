@@ -87,7 +87,10 @@ func RushNode(delta : float) -> BehaviorTreeNode:
 # applies logic when enemy hits player
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if(body == player):
-		DealDamage(damage)
+		if(player.burstResistanceActive == false):
+			DealDamage(damage)
+		else:
+			DealDamage(damage * player.burstDamageResistance)
 		
 
 func DealDamage(damageToDeal : float):

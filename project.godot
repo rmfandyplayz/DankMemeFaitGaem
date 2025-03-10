@@ -47,6 +47,7 @@ folder_colors={
 
 StopsBurst="whether or not player's burst should be stopped when colliding with this object."
 DamageSource="a collision that can deal damage"
+Enemy="Is the collision source an enemy?"
 
 [input]
 

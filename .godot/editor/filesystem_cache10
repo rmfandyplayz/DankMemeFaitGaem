@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1741368585
+::res://::1741623757
 default_bus_layout.tres::AudioBusLayout/AudioBusLayout::5446819712888266413::1738774797::0::1::::<><><>0<>0<><>::
 ::res://_StuffINeedToShowKinney/::1741062952
 ShowcasePlayerScript.gd::GDScript/GDScript::804504030421826270::1740160152::0::1::::<>CharacterBody2D<><>0<>0<><>::
@@ -92,28 +92,28 @@ Bar_HealthEmpty.png::CompressedTexture2D/CompressedTexture2D::747898401827128175
 Bar_HealthFill.png::CompressedTexture2D/CompressedTexture2D::1336538722517986506::1739552987::1740155403::1::::<><><>0<>0<>8ff348f615fed03cde6217aa68a4b9bb<>res://.godot/imported/Bar_HealthFill.png-ad1449695a9a52c8f24eee625ac27fb5.ctex::
 bootsplash.png::CompressedTexture2D/CompressedTexture2D::690618685949593178::1738568583::1740155404::1::::<><><>0<>0<>4b15c5e4493b2af318cc1be8caa2d424<>res://.godot/imported/bootsplash.png-b6c0055cfb514c5c32dbb2dfc5ed3ec8.ctex::
 ::res://Scenes/::1738774096
-::res://Scenes/Entities/::1741368569
-Enemy_UgandaKnuckles.tscn::PackedScene::2874820186037531543::1741368538::0::1::::<><><>0<>0<><>::uid://3futn3kou32f::::res://Scripts/Enemies/Enemy_UgandaKnuckles.gd<>uid://b2ti0bnanbie3::::res://Media/Sprites/Entities/Enemies/Enemy_UgandaKnuckles/knuckles.png
-Player.tscn::PackedScene::5796895808325359027::1741368569::0::1::::<><><>0<>0<><>::uid://chy5f30nb8ujk::::res://Scripts/Player/Player.gd<>uid://bjfiyy7kntp5u::::res://Shaders/SpeedLines.tres<>uid://b7kmy4lyq60dx::::res://Media/Sprites/Entities/Player/Boost_01.png<>uid://w4ulkoieu020::::res://Media/Sprites/Entities/Player/Idle_01.png<>uid://bmmktf2ysdn6m::::res://Media/Sprites/Entities/Player/Idle_02.png<>uid://fgx0qbhexwgg::::res://Media/Sprites/Entities/Player/Boost_02.png<>uid://w85t7ugy6ol6::::res://Media/Sprites/Entities/Player/Boost_Fire_End_0.png<>uid://dprjvgg63wiuv::::res://Media/Sprites/Entities/Player/Boost_Fire_End_1.png<>uid://cg448jr2pasoc::::res://Media/Sprites/Entities/Player/Walk_01.png<>uid://wnpi0tqfn6ka::::res://Media/Sprites/Entities/Player/Boost_Fire_End_2.png<>uid://cglbk5ne1jsb8::::res://Media/Sprites/Entities/Player/Walk_02.png<>uid://dj1meo7gl633o::::res://Media/Sprites/Entities/Player/Walk_03.png<>uid://du6fec1iiatdb::::res://Media/Sprites/Entities/Player/Boost_Fire_End_3.png<>uid://lheshvjgiy0v::::res://Media/Audio/SFX/krabsWalk.mp3<>uid://sjy17nhxhjb2::::res://Media/Sprites/Entities/Player/Boost_Fire_Init_0.png<>uid://c8kc04qax1ptw::::res://Media/UI/Bar_Boost_Empty.png<>uid://gqgck5efusys::::res://Media/Sprites/Entities/Player/Boost_Fire_Init_1.png<>uid://cig4pd068ln7v::::res://Media/UI/Bar_Boost_Fill.png<>uid://by6gdxmph8dv4::::res://Media/Sprites/Entities/Player/Boost_Fire_Init_2.png<>uid://c7jufy6vp4m3s::::res://Media/Sprites/Entities/Player/Boost_Fire_Loop_0.png<>uid://mt41g5itjkfb::::res://Media/Sprites/Entities/Player/Boost_Fire_Loop_1.png<>uid://blur4twiadbhs::::res://Media/Sprites/Entities/Player/Boost_Fire_Loop_2.png<>uid://cxh0pdrtxfpyo::::res://Media/Sprites/Entities/Player/Boost_Fire_Loop_3.png<>uid://kwj1oxjlbccl::::res://Media/UI/Bar_HealthEmpty.png<>uid://tboukxyhrgle::::res://Media/UI/Bar_HealthFill.png
+::res://Scenes/Entities/::1741383357
+Enemy_UgandaKnuckles.tscn::PackedScene::2874820186037531543::1741383357::0::1::::<><><>0<>0<><>::uid://3futn3kou32f::::res://Scripts/Enemies/Enemy_UgandaKnuckles.gd<>uid://b2ti0bnanbie3::::res://Media/Sprites/Entities/Enemies/Enemy_UgandaKnuckles/knuckles.png
+Player.tscn::PackedScene::5796895808325359027::1741383265::0::1::::<><><>0<>0<><>::uid://chy5f30nb8ujk::::res://Scripts/Player/Player.gd<>uid://bjfiyy7kntp5u::::res://Shaders/SpeedLines.tres<>uid://b7kmy4lyq60dx::::res://Media/Sprites/Entities/Player/Boost_01.png<>uid://w4ulkoieu020::::res://Media/Sprites/Entities/Player/Idle_01.png<>uid://bmmktf2ysdn6m::::res://Media/Sprites/Entities/Player/Idle_02.png<>uid://fgx0qbhexwgg::::res://Media/Sprites/Entities/Player/Boost_02.png<>uid://w85t7ugy6ol6::::res://Media/Sprites/Entities/Player/Boost_Fire_End_0.png<>uid://dprjvgg63wiuv::::res://Media/Sprites/Entities/Player/Boost_Fire_End_1.png<>uid://cg448jr2pasoc::::res://Media/Sprites/Entities/Player/Walk_01.png<>uid://wnpi0tqfn6ka::::res://Media/Sprites/Entities/Player/Boost_Fire_End_2.png<>uid://cglbk5ne1jsb8::::res://Media/Sprites/Entities/Player/Walk_02.png<>uid://dj1meo7gl633o::::res://Media/Sprites/Entities/Player/Walk_03.png<>uid://du6fec1iiatdb::::res://Media/Sprites/Entities/Player/Boost_Fire_End_3.png<>uid://lheshvjgiy0v::::res://Media/Audio/SFX/krabsWalk.mp3<>uid://sjy17nhxhjb2::::res://Media/Sprites/Entities/Player/Boost_Fire_Init_0.png<>uid://c8kc04qax1ptw::::res://Media/UI/Bar_Boost_Empty.png<>uid://gqgck5efusys::::res://Media/Sprites/Entities/Player/Boost_Fire_Init_1.png<>uid://cig4pd068ln7v::::res://Media/UI/Bar_Boost_Fill.png<>uid://by6gdxmph8dv4::::res://Media/Sprites/Entities/Player/Boost_Fire_Init_2.png<>uid://c7jufy6vp4m3s::::res://Media/Sprites/Entities/Player/Boost_Fire_Loop_0.png<>uid://mt41g5itjkfb::::res://Media/Sprites/Entities/Player/Boost_Fire_Loop_1.png<>uid://blur4twiadbhs::::res://Media/Sprites/Entities/Player/Boost_Fire_Loop_2.png<>uid://cxh0pdrtxfpyo::::res://Media/Sprites/Entities/Player/Boost_Fire_Loop_3.png<>uid://kwj1oxjlbccl::::res://Media/UI/Bar_HealthEmpty.png<>uid://tboukxyhrgle::::res://Media/UI/Bar_HealthFill.png<>uid://ci747jjckt6ey::::res://Media/Fonts/Comic Sans/ComicSansMS.ttf<>uid://6rnrffvnoabi::::res://Media/Fonts/Comic Sans/ComicSansMS-Italic.ttf<>uid://7nvftafso3jy::::res://Media/Fonts/Comic Sans/ComicSansMS-BoldItalic.ttf<>uid://dhkcjmpqgiovf::::res://Media/Fonts/Comic Sans/ComicSansMS-Bold.ttf
 ::res://Scenes/Environment Elements/::1741062952
 MovingPlatform.tscn::PackedScene/PackedScene::1676705873573104886::1741062952::0::1::::<><><>0<>0<><>::uid://bypiqjvcca5jt::::res://Media/Sprites/Environment/MovePlatform_NyanCat.png<>uid://d0k803tu8a5bm::::res://Scripts/Environment Elements/MovingPlatform.gd
-::res://Scenes/Levels/::1741368538
-00_Tutorial.tscn::PackedScene::5601771421701421598::1741368538::0::1::::<><><>0<>0<><>::uid://boxibhxjg4pr4::::res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Walls.png<>uid://c2wguj6bu8y1s::::res://Scenes/Utility Scenes/AudioSystem.tscn<>uid://couca6ih4wql4::::res://Scenes/Entities/Player.tscn<>uid://bmx572cbdy1k6::::res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Carpet.png<>uid://bg7t4r6py1dmd::::res://Scenes/Entities/Enemy_UgandaKnuckles.tscn
+::res://Scenes/Levels/::1741383265
+00_Tutorial.tscn::PackedScene::5601771421701421598::1741383265::0::1::::<><><>0<>0<><>::uid://boxibhxjg4pr4::::res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Walls.png<>uid://c2wguj6bu8y1s::::res://Scenes/Utility Scenes/AudioSystem.tscn<>uid://couca6ih4wql4::::res://Scenes/Entities/Player.tscn<>uid://bmx572cbdy1k6::::res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Carpet.png<>uid://bg7t4r6py1dmd::::res://Scenes/Entities/Enemy_UgandaKnuckles.tscn
 ::res://Scenes/Utility Scenes/::1741062952
 AudioSystem.tscn::PackedScene/PackedScene::6713756994709664270::1741062952::0::1::::<><><>0<>0<><>::uid://dfhru24w3js7h::::res://Scripts/Audio System/AudioSystem.gd
 ::res://Scripts/::1740589187
 ::res://Scripts/Audio System/::1741196945
 AudioSystem.gd::GDScript/GDScript::7525726282270165655::1741196945::0::1::::<>Node<><>0<>0<><>::
-::res://Scripts/Enemies/::1741368484
+::res://Scripts/Enemies/::1741371008
 BaseEnemy.gd::GDScript/GDScript::6762018187045797817::1741118880::0::1::::BaseEnemy<>StaticBody2D<><>0<>0<><>::
-Enemy_UgandaKnuckles.gd::GDScript::1976858507106685771::1741368484::0::1::::<>BaseEnemy<><>0<>0<><>::
+Enemy_UgandaKnuckles.gd::GDScript::1976858507106685771::1741371008::0::1::::<>BaseEnemy<><>0<>0<><>::
 ::res://Scripts/Environment Elements/::1741062952
 MovingPlatform.gd::GDScript/GDScript::8936676726137556470::1739465894::0::1::::<>AnimatableBody2D<><>0<>0<><>::
-::res://Scripts/Player/::1741368468
-Player.gd::GDScript::5315540287569613572::1741368468::0::1::::<>CharacterBody2D<><>0<>0<><>::
-::res://Shaders/::1741368576
-SpeedLines.gdshader::Shader::2797452724281970111::1741368576::0::1::::<><><>0<>0<><>::
-SpeedLines.tres::ShaderMaterial::3028972070668177140::1741365241::0::1::::<><><>0<>0<><>::uid://bf4dvxeovge4v::::res://Shaders/SpeedLines.gdshader
+::res://Scripts/Player/::1741370672
+Player.gd::GDScript::5315540287569613572::1741370672::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://Shaders/::1741386715
+SpeedLines.gdshader::Shader::2797452724281970111::1741386715::0::1::::<><><>0<>0<><>::
+SpeedLines.tres::ShaderMaterial::3028972070668177140::1741368781::0::1::::<><><>0<>0<><>::uid://bf4dvxeovge4v::::res://Shaders/SpeedLines.gdshader
 ::res://Testing/::1738604320
 Test.tscn::PackedScene/PackedScene::5894206502833085222::1738604320::0::1::::<><><>0<>0<><>::
 ::res://Testing/Test Assets/::1740155407

@@ -5,9 +5,11 @@ extends CharacterBody2D
 @export var maxHealth : float
 @export var healthBar : TextureProgressBar
 @export var healthText : RichTextLabel
-@export var moveSpeed : float
-@export var acceleration : float
-@export var friction : float  # also how fast we decelerate
+@export var burstDamageResistance : float # % damage resistance while bursting (damage x burstDamageResistance)
+var burstResistanceActive : bool
+@export var moveSpeed : float # max move speed
+@export var acceleration : float # the rate at we get to the max speed
+@export var friction : float  # how fast we decelerate
 
 # sprites, animations, etc
 @export var playerSprite : AnimatedSprite2D
@@ -17,7 +19,6 @@ extends CharacterBody2D
 # music / SFX
 @export var walkingSFX : AudioStreamPlayer2D
 var disableWalkSFX : bool = false
-
 
 # controls
 @export var speedLines : ColorRect
@@ -38,6 +39,9 @@ var burstTimer : float = 0 # current amount of available burst
 @export var burstFlame : AnimatedSprite2D
 
 @export var collisionDetector : Area2D
+
+
+
 
 func _ready() -> void:
 	#burst bar initial configs
@@ -106,6 +110,8 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("StopsBurst")):
 		EndBurst()
+	if(body.is_in_group("Enemy")):
+		pass
 	
 
 func MovePlayer(inputDirection : Vector2, delta : float):
@@ -126,6 +132,7 @@ func StartBurst(direction : Vector2):
 		return
 	
 	disableWalkSFX = true
+	burstResistanceActive = true
 	walkingSFX.stop()
 	
 	#animations and stuff
@@ -176,7 +183,8 @@ func EndBurst():
 	
 	#keep the burst music where it was so it can be picked off where it left off later
 	if(is_instance_valid(burstMusic)):
-		burstMusicTimestamp = await AudioSystem.StopAudio(burstMusic, true, 1)
+		burstMusicTimestamp = await AudioSystem.StopAudio(burstMusic, true, 0.2)
+	burstResistanceActive = false
 
 
 # all of the below HP functions share similar features

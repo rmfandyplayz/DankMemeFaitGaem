@@ -134,6 +134,7 @@ script = ExtResource("1_mkxkn")
 maxHealth = 419.0
 healthBar = NodePath("Canvas/CanvasControls/HealthBar")
 healthText = NodePath("Canvas/CanvasControls/HealthBar/HealthText")
+burstDamageResistance = 0.4
 moveSpeed = 900.0
 acceleration = 2000.0
 friction = 900.0
@@ -147,7 +148,7 @@ burstRechargeSpd = 0.5
 burstRechargeCd = 1.7
 burstBar = NodePath("Canvas/CanvasControls/BurstBar")
 burstFlame = NodePath("Sprites/BurstFlame")
-collisionDetector = NodePath("CollisionDetector")
+collisionDetector = NodePath("HitboxHurtbox")
 
 [node name="MainCollider" type="CollisionShape2D" parent="."]
 position = Vector2(-12, 0.5)
@@ -202,9 +203,9 @@ scale = Vector2(0.440433, 0.440433)
 sprite_frames = SubResource("SpriteFrames_nuque")
 animation = &"idle"
 
-[node name="CollisionDetector" type="Area2D" parent="."]
+[node name="HitboxHurtbox" type="Area2D" parent="."]
 
-[node name="DetectorCollider" type="CollisionShape2D" parent="CollisionDetector"]
+[node name="DetectorCollider" type="CollisionShape2D" parent="HitboxHurtbox"]
 position = Vector2(-12, 0.5)
 shape = SubResource("RectangleShape2D_0aity")
 debug_color = Color(0.757167, 0.77, 0, 0.470588)
@@ -277,4 +278,4 @@ scroll_active = false
 shortcut_keys_enabled = false
 vertical_alignment = 1
 
-[connection signal="body_entered" from="CollisionDetector" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="HitboxHurtbox" to="." method="_on_body_entered"]

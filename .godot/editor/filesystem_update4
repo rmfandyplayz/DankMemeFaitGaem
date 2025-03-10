@@ -1,7 +1,9 @@
-res://Scenes/Entities/Player.tscn
+res://Scenes/Levels/00_Tutorial.tscn
 res://Shaders/SpeedLines.gdshader
 res://Shaders/SpeedLines.tres
-res://Scripts/Player/Player.gd
-res://Scenes/Levels/00_Tutorial.tscn
+res://Scenes/Entities/Player.tscn
 res://Scenes/Entities/Enemy_UgandaKnuckles.tscn
+res://Scripts/Enemies/BaseEnemy.gd
+res://Scripts/Player/Player.gd
+res://Scenes/Environment Elements/MovingPlatform.tscn
 res://Scripts/Enemies/Enemy_UgandaKnuckles.gd

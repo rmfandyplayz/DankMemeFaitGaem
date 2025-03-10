@@ -9,7 +9,7 @@ size = Vector2(134, 120)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7m8jb"]
 size = Vector2(136, 122)
 
-[node name="EnemyUgandaKnuckles" type="StaticBody2D" node_paths=PackedStringArray("hurtbox") groups=["StopsBurst"]]
+[node name="EnemyUgandaKnuckles" type="StaticBody2D" node_paths=PackedStringArray("hurtbox") groups=["Enemy", "StopsBurst"]]
 script = ExtResource("1_anai0")
 rushSpeed = 1350.0
 rushInterval = 3.0
