@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 # basic properties
+@export_category("Basic Properties")
 @export var currentHealth : float
 @export var maxHealth : float
 @export var healthBar : TextureProgressBar
@@ -10,20 +11,25 @@ var burstResistanceActive : bool
 @export var moveSpeed : float # max move speed
 @export var acceleration : float # the rate at we get to the max speed
 @export var friction : float  # how fast we decelerate
+@export var damage : float
 
 # sprites, animations, etc
+@export_category("Sprites & Animations")
 @export var playerSprite : AnimatedSprite2D
 @export var minSpriteAnimationSpeed : float = 0.75
 @export var maxSpriteAnimationSpeed : float = 3.0
 
 # music / SFX
+@export_category("Music / SFX")
 @export var walkingSFX : AudioStreamPlayer2D
 var disableWalkSFX : bool = false
 
 # controls
+@export_category("Controls")
 @export var speedLines : ColorRect
 
 # all things related to the burst mechanic
+@export_category("All Things Burst")
 @export var burstSpeed : float
 @export var burstMaxDuration : float # in seconds
 @export var burstRechargeSpd : float # how many seconds per second
@@ -38,8 +44,12 @@ var burstDirection : Vector2 = Vector2.ZERO
 var burstTimer : float = 0 # current amount of available burst
 @export var burstFlame : AnimatedSprite2D
 
+@export_category("Others / Uncategorized")
 @export var collisionDetector : Area2D
 
+
+# internal variables
+# var previousVelocity : Vector2
 
 
 
@@ -103,15 +113,21 @@ func _process(delta: float) -> void:
 		elif burstTimer < burstMaxDuration:
 			burstTimer = min(burstTimer + (burstRechargeSpd * delta), burstMaxDuration)
 			burstBar.value = burstTimer
-			
+
 
 # signal - from Player/CollisionDetector.
 # equivalent of OnCollisionEnter2D and such from Unity. does something when collision happens
 func _on_body_entered(body: Node2D) -> void:
-	if(body.is_in_group("StopsBurst")):
+	var isEnemy : bool = body.is_in_group("Enemy")
+	var stopsBurst : bool = body.is_in_group("StopsBurst")	
+	
+	if(isEnemy == true):
+		if(burstActive == true):
+			body.TakeDamage(damage, velocity)
+			EndBurst()
+			
+	if(stopsBurst == true and isEnemy == false):
 		EndBurst()
-	if(body.is_in_group("Enemy")):
-		pass
 	
 
 func MovePlayer(inputDirection : Vector2, delta : float):

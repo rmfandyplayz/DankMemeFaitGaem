@@ -127,7 +127,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0aity"]
-size = Vector2(58, 161)
+size = Vector2(585, 791)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("healthBar", "healthText", "playerSprite", "walkingSFX", "speedLines", "burstBar", "burstFlame", "collisionDetector")]
 script = ExtResource("1_mkxkn")
@@ -138,6 +138,7 @@ burstDamageResistance = 0.4
 moveSpeed = 900.0
 acceleration = 2000.0
 friction = 900.0
+damage = 35.0
 playerSprite = NodePath("Sprites/PlayerSprite")
 maxSpriteAnimationSpeed = 2.25
 walkingSFX = NodePath("SFX/WalkingSFX")
@@ -182,9 +183,9 @@ anchor_top = 0.044
 anchor_right = 0.956
 anchor_bottom = 0.955
 offset_left = 1.53598
-offset_top = 0.999992
+offset_top = -4.00001
 offset_right = -1.53613
-offset_bottom = 0.999878
+offset_bottom = -4.00012
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -206,7 +207,7 @@ animation = &"idle"
 [node name="HitboxHurtbox" type="Area2D" parent="."]
 
 [node name="DetectorCollider" type="CollisionShape2D" parent="HitboxHurtbox"]
-position = Vector2(-12, 0.5)
+position = Vector2(-11.5, 0.5)
 shape = SubResource("RectangleShape2D_0aity")
 debug_color = Color(0.757167, 0.77, 0, 0.470588)
 

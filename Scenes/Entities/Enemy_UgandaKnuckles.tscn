@@ -4,19 +4,26 @@
 [ext_resource type="Texture2D" uid="uid://b2ti0bnanbie3" path="res://Media/Sprites/Entities/Enemies/Enemy_UgandaKnuckles/knuckles.png" id="1_mui3m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m7847"]
-size = Vector2(134, 120)
+size = Vector2(121, 116)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7m8jb"]
-size = Vector2(136, 122)
+size = Vector2(168, 161)
 
-[node name="EnemyUgandaKnuckles" type="StaticBody2D" node_paths=PackedStringArray("hurtbox") groups=["Enemy", "StopsBurst"]]
+[node name="EnemyUgandaKnuckles" type="RigidBody2D" node_paths=PackedStringArray("hurtbox", "stunTimer") groups=["Enemy", "StopsBurst"]]
+mass = 0.05
+gravity_scale = 0.0
+lock_rotation = true
 script = ExtResource("1_anai0")
 rushSpeed = 1350.0
 rushInterval = 3.0
 rushDuration = 1.5
 damage = 57.0
 hurtbox = NodePath("Hurtbox")
-health = 100.0
+maxHealth = 500.0
+damageResistance = 1.0
+knockbackResistance = 1.0
+stunDuration = 2.3
+stunTimer = NodePath("StunTimer")
 aiActivationRange = 2200.0
 aiDeactivationRange = 3600.0
 
@@ -25,14 +32,16 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_mui3m")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_m7847")
 
-[node name="Hurtbox" type="Area2D" parent="." groups=["DamageSource"]]
+[node name="Hurtbox" type="Area2D" parent="." groups=["DamageSource", "Enemy", "StopsBurst"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(1, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" groups=["DamageSource", "Enemy", "StopsBurst"]]
+position = Vector2(1, 1.5)
 shape = SubResource("RectangleShape2D_7m8jb")
 debug_color = Color(0.74, 0, 0, 0.419608)
+
+[node name="StunTimer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

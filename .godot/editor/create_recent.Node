@@ -1,3 +1,5 @@
+Timer
+RigidBody2D
 RichTextLabel
 Label
 CollisionShape2D
@@ -6,10 +8,8 @@ StaticBody2D
 Node2D
 CharacterBody2D
 Camera2D
-RigidBody2D
 Sprite2D
 AnimatedSprite2D
 TextureProgressBar
 GraphEdit
 Control
-CanvasLayer

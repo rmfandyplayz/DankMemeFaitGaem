@@ -18,6 +18,7 @@ enum BehaviorTreeNode {
 @export var pushForce : float # how much will the player be pushed on damage?
 
 
+
 # internal stuff
 var waitTimer : float = 0 # keeps track of time between each rush
 var rushTimer : float = 0 # keeps track of time DURING each rush
@@ -29,6 +30,8 @@ var isRushing : bool = false
 
 func _ready() -> void:
 	player = %Player
+	currentHealth = maxHealth
+	stunTimer.wait_time = stunDuration
 
 func _physics_process(delta: float) -> void:
 	if ActivationRangeNode() == true:
@@ -49,15 +52,16 @@ func ActivationRangeNode() -> bool:
 	
 # main behavior tree that manages all AI for this enemy
 func BehaviorTree(delta : float) -> void:
-	if WaitNode(delta) == BehaviorTreeNode.SUCCESS: #rush if success
-		ActivateHurtbox()
-		if RushNode(delta) == BehaviorTreeNode.SUCCESS:
-			isRushing = false
-			waitTimer = 0
-			rushTimer = 0
-			rushVelocityAlreadySet = false
-			await get_tree().create_timer(.15).timeout
-			DeactivateHurtbox()
+	if (disableAi == false):
+		if WaitNode(delta) == BehaviorTreeNode.SUCCESS: #rush if success
+			ActivateHurtbox()
+			if RushNode(delta) == BehaviorTreeNode.SUCCESS:
+				isRushing = false
+				waitTimer = 0
+				rushTimer = 0
+				rushVelocityAlreadySet = false
+				await get_tree().create_timer(.15).timeout
+				DeactivateHurtbox()
 			
 
 
@@ -95,7 +99,6 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 
 func DealDamage(damageToDeal : float):
 	player.SubtractHP(damageToDeal)
-
 
 func ActivateHurtbox():
 	hurtbox.monitoring = true
