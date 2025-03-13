@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bg7t4r6py1dmd"]
+[gd_scene load_steps=6 format=3 uid="uid://bg7t4r6py1dmd"]
 
 [ext_resource type="Script" uid="uid://3futn3kou32f" path="res://Scripts/Enemies/Enemy_UgandaKnuckles.gd" id="1_anai0"]
 [ext_resource type="Texture2D" uid="uid://b2ti0bnanbie3" path="res://Media/Sprites/Entities/Enemies/Enemy_UgandaKnuckles/knuckles.png" id="1_mui3m"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7m8jb"]
+friction = 0.7
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m7847"]
 size = Vector2(121, 116)
@@ -10,7 +13,8 @@ size = Vector2(121, 116)
 size = Vector2(168, 161)
 
 [node name="EnemyUgandaKnuckles" type="RigidBody2D" node_paths=PackedStringArray("hurtbox", "stunTimer") groups=["Enemy", "StopsBurst"]]
-mass = 0.05
+mass = 0.02
+physics_material_override = SubResource("PhysicsMaterial_7m8jb")
 gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_anai0")
@@ -43,5 +47,6 @@ shape = SubResource("RectangleShape2D_7m8jb")
 debug_color = Color(0.74, 0, 0, 0.419608)
 
 [node name="StunTimer" type="Timer" parent="."]
+wait_time = 0.5
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

@@ -127,7 +127,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0aity"]
-size = Vector2(585, 791)
+size = Vector2(67, 169)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("healthBar", "healthText", "playerSprite", "walkingSFX", "speedLines", "burstBar", "burstFlame", "collisionDetector")]
 script = ExtResource("1_mkxkn")
@@ -182,10 +182,10 @@ anchor_left = 0.044
 anchor_top = 0.044
 anchor_right = 0.956
 anchor_bottom = 0.955
-offset_left = 1.53598
-offset_top = -4.00001
-offset_right = -1.53613
-offset_bottom = -4.00012
+offset_left = -51.464
+offset_top = 44.0
+offset_right = -54.5361
+offset_bottom = 43.9999
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4

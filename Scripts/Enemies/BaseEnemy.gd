@@ -23,6 +23,7 @@ var player : CharacterBody2D # used to access player properties
 
 func TakeDamage(damage : float, collisionVelocity : Vector2): # collisionVelocity is for knocking the enemy back
 	if(stunTimer.wait_time == 0): # enemy is only able to be damaged if not stunned
+		print("stun timer > 0")
 		currentHealth -= damage * damageResistance
 		if(currentHealth <= 0):
 			Die()

@@ -31,11 +31,12 @@ var isRushing : bool = false
 func _ready() -> void:
 	player = %Player
 	currentHealth = maxHealth
-	stunTimer.wait_time = stunDuration
+	stunTimer.start()
 
 func _physics_process(delta: float) -> void:
 	if ActivationRangeNode() == true:
 		BehaviorTree(delta)
+	print(stunTimer.wait_time)
 
 
 # determines if the AI is activated via range

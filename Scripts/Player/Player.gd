@@ -119,10 +119,11 @@ func _process(delta: float) -> void:
 # equivalent of OnCollisionEnter2D and such from Unity. does something when collision happens
 func _on_body_entered(body: Node2D) -> void:
 	var isEnemy : bool = body.is_in_group("Enemy")
-	var stopsBurst : bool = body.is_in_group("StopsBurst")	
+	var stopsBurst : bool = body.is_in_group("StopsBurst")
 	
 	if(isEnemy == true):
 		if(burstActive == true):
+			print("take damage: ", damage, " ", velocity)
 			body.TakeDamage(damage, velocity)
 			EndBurst()
 			
