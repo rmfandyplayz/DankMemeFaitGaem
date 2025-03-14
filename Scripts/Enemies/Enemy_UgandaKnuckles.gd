@@ -33,6 +33,7 @@ func _ready() -> void:
 	currentHealth = maxHealth
 	stunTimer.wait_time = stunDuration
 	stunTimer.start()
+	DeactivateHurtbox()
 	
 
 func _physics_process(delta: float) -> void:
@@ -57,7 +58,7 @@ var forcesAlreadyReset : bool = false
 func BehaviorTree(delta : float) -> void:
 	if (stunTimer.time_left <= 0):
 		if WaitNode(delta) == BehaviorTreeNode.SUCCESS: #rush if success
-			
+			ActivateHurtbox()
 			if(forcesAlreadyReset == false):
 				linear_velocity = Vector2.ZERO
 				forcesAlreadyReset = true
@@ -98,7 +99,7 @@ func RushNode(delta : float) -> BehaviorTreeNode:
 
 # applies logic when enemy hits player
 func _on_hurtbox_body_entered(body: Node2D) -> void:
-	if(body == player):
+	if(body.is_in_group("Player")):
 		if(player.burstResistanceActive == false):
 			DealDamage(damage)
 		else:
@@ -106,6 +107,7 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 		
 
 func TakeDamage(damage : float, collisionVelocity : Vector2): # collisionVelocity is for knocking the enemy back
+	print(damage, " damage")
 	if(stunTimer.time_left <= 0 and isRushing == false): # enemy is only able to be damaged if not stunned and is not rushing
 		currentHealth -= damage * damageResistance
 		if(currentHealth <= 0):

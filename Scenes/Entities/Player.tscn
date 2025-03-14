@@ -127,14 +127,14 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0aity"]
-size = Vector2(81, 169)
+size = Vector2(93, 197)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("healthBar", "healthText", "playerSprite", "walkingSFX", "speedLines", "burstBar", "burstFlame", "collisionDetector")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("healthBar", "healthText", "playerSprite", "walkingSFX", "speedLines", "burstBar", "burstFlame", "collisionDetector") groups=["Player"]]
 script = ExtResource("1_mkxkn")
-maxHealth = 419.0
+maxHealth = 20000.0
 healthBar = NodePath("Canvas/CanvasControls/HealthBar")
 healthText = NodePath("Canvas/CanvasControls/HealthBar/HealthText")
-burstDamageResistance = 0.4
+burstDamageResistance = 0.6
 moveSpeed = 900.0
 acceleration = 2000.0
 friction = 900.0
@@ -144,7 +144,7 @@ maxSpriteAnimationSpeed = 2.25
 walkingSFX = NodePath("SFX/WalkingSFX")
 speedLines = NodePath("CameraDependentControls/SpeedLines")
 burstSpeed = 1700.0
-burstMaxDuration = 3.0
+burstMaxDuration = 1000.0
 burstRechargeSpd = 0.5
 burstRechargeCd = 1.7
 burstBar = NodePath("Canvas/CanvasControls/BurstBar")
@@ -155,16 +155,6 @@ collisionDetector = NodePath("HitboxHurtbox")
 position = Vector2(-12, 0.5)
 shape = SubResource("RectangleShape2D_fq4iy")
 debug_color = Color(0.166667, 0, 1, 0.631373)
-
-[node name="Camera" type="Camera2D" parent="."]
-position_smoothing_enabled = true
-position_smoothing_speed = 7.5
-drag_left_margin = 0.3
-drag_top_margin = 0.3
-drag_right_margin = 0.3
-drag_bottom_margin = 0.3
-editor_draw_limits = true
-editor_draw_drag_margin = true
 
 [node name="CameraDependentControls" type="Control" parent="."]
 layout_mode = 3
@@ -204,7 +194,7 @@ scale = Vector2(0.440433, 0.440433)
 sprite_frames = SubResource("SpriteFrames_nuque")
 animation = &"idle"
 
-[node name="HitboxHurtbox" type="Area2D" parent="."]
+[node name="HitboxHurtbox" type="Area2D" parent="." groups=["WinCollision"]]
 
 [node name="DetectorCollider" type="CollisionShape2D" parent="HitboxHurtbox"]
 position = Vector2(-11.5, 0.5)

@@ -46,6 +46,7 @@ var burstTimer : float = 0 # current amount of available burst
 
 @export_category("Others / Uncategorized")
 @export var collisionDetector : Area2D
+@export var game : Node2D
 
 
 # internal variables
@@ -120,10 +121,13 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	var isEnemy : bool = body.is_in_group("Enemy")
 	var stopsBurst : bool = body.is_in_group("StopsBurst")
+	var isWinningSource : bool = body.is_in_group("WinCollision")
+	
+	if(isWinningSource == true):
+		game.Win()
 	
 	if(isEnemy == true):
 		if(burstActive == true):
-			print("collided with enemy")
 			body.TakeDamage(damage, velocity)
 			EndBurst()
 			
@@ -213,21 +217,23 @@ func AddHP(hpAddValue : float):
 	UpdateHealthUI()
 	
 	if(currentHealth <= 0):
+		SetHP(0)
+		visible = false
 		Die()
 	
 func SubtractHP(hpSubtractValue : float):
+	print("take damage: ", hpSubtractValue)
 	currentHealth -= hpSubtractValue
 	UpdateHealthUI()
 	
 	if(currentHealth <= 0):
+		SetHP(0)
+		visible = false
 		Die()
 	
 func SetHP(newHpValue : float):
 	currentHealth = newHpValue
 	UpdateHealthUI()
-	
-	if(currentHealth <= 0):
-		Die()
 		
 # updates all helath things that are ui-related
 func UpdateHealthUI():
@@ -259,7 +265,7 @@ func GetInput() -> Vector2:
 
 # runs logic for player death
 func Die():
-	get_tree().reload_current_scene()
+	game.ResetLevel()
 
 # utility functions used by other scripts (i.e. enemies so they know your pos)
 func GetPos():

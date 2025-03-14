@@ -21,6 +21,7 @@ config/icon="uid://bv3xa6x6osuli"
 [autoload]
 
 AudioSystem="*res://Scripts/Audio System/AudioSystem.gd"
+TutorialLevel="*res://Scripts/LevelSpecific/TutorialLevel.gd"
 
 [display]
 
@@ -48,6 +49,8 @@ folder_colors={
 StopsBurst="whether or not player's burst should be stopped when colliding with this object."
 DamageSource="a collision that can deal damage"
 Enemy="Is the collision source an enemy?"
+Player=""
+WinCollision=""
 
 [input]
 

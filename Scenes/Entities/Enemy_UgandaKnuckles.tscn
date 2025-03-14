@@ -29,7 +29,7 @@ damageResistance = 1.0
 knockbackResistance = 1.0
 stunDuration = 2.3
 stunTimer = NodePath("StunTimer")
-aiActivationRange = 2200.0
+aiActivationRange = 2000.0
 aiDeactivationRange = 3600.0
 
 [node name="Knuckles" type="Sprite2D" parent="."]

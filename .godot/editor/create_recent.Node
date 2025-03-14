@@ -1,3 +1,11 @@
+StaticBody2D
+Area2D
+CanvasLayer
+ColorRect
+TextureRect
+Control
+CollisionShape2D
+Node2D
 Parallax2D
 ParallaxBackground
 ParallaxLayer
@@ -5,10 +13,3 @@ Timer
 RigidBody2D
 RichTextLabel
 Label
-CollisionShape2D
-Area2D
-StaticBody2D
-Node2D
-CharacterBody2D
-Camera2D
-Sprite2D

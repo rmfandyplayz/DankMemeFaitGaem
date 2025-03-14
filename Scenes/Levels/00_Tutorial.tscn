@@ -1,21 +1,26 @@
-[gd_scene load_steps=14 format=4 uid="uid://cl2smetcd1g5k"]
+[gd_scene load_steps=17 format=4 uid="uid://cl2smetcd1g5k"]
 
 [ext_resource type="Texture2D" uid="uid://boxibhxjg4pr4" path="res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Walls.png" id="1_457sp"]
 [ext_resource type="PackedScene" uid="uid://c2wguj6bu8y1s" path="res://Scenes/Utility Scenes/AudioSystem.tscn" id="1_cd73a"]
+[ext_resource type="Script" uid="uid://6i2y0fynbm57" path="res://Scripts/LevelSpecific/TutorialLevel.gd" id="1_jpilt"]
 [ext_resource type="PackedScene" uid="uid://couca6ih4wql4" path="res://Scenes/Entities/Player.tscn" id="2_57raj"]
 [ext_resource type="Texture2D" uid="uid://cwuq573ybn1v8" path="res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Obstacle_BigWall.png" id="2_ammlu"]
 [ext_resource type="Texture2D" uid="uid://bmx572cbdy1k6" path="res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Carpet.png" id="2_ie5i3"]
 [ext_resource type="Texture2D" uid="uid://gser1pxhng61" path="res://Media/Sprites/LevelSpecific/Level_00_Tutorial/Background_Foreground.png" id="2_u0gdv"]
+[ext_resource type="Texture2D" uid="uid://6xplecy2apac" path="res://Media/Sprites/Environment/Clouds.png" id="3_s682e"]
 [ext_resource type="PackedScene" uid="uid://bg7t4r6py1dmd" path="res://Scenes/Entities/Enemy_UgandaKnuckles.tscn" id="5_je4ep"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iv4qu"]
-size = Vector2(10919, 736)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s682e"]
-size = Vector2(10919, 726)
+size = Vector2(29961, 736)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0gdv"]
 size = Vector2(1001, 2037)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s682e"]
+size = Vector2(29904, 726)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpilt"]
+size = Vector2(878, 1765)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l8f1v"]
 texture = ExtResource("1_457sp")
@@ -32,6 +37,7 @@ sources/0 = SubResource("TileSetAtlasSource_l8f1v")
 sources/1 = SubResource("TileSetAtlasSource_y5aj8")
 
 [node name="00Tutorial" type="Node2D"]
+script = ExtResource("1_jpilt")
 metadata/_edit_lock_ = true
 
 [node name="AudioSystem" parent="." instance=ExtResource("1_cd73a")]
@@ -43,25 +49,66 @@ repeat_times = 3
 
 [node name="Foreground" type="Sprite2D" parent="ForegroundParallax"]
 z_index = 1
-position = Vector2(109, 684)
+position = Vector2(106, 684)
 texture = ExtResource("2_u0gdv")
 
+[node name="BackgroundParallax" type="Parallax2D" parent="."]
+z_index = -1
+scroll_scale = Vector2(1.1, 1.1)
+repeat_size = Vector2(2730, 0)
+repeat_times = 3
+
+[node name="Clouds" type="Sprite2D" parent="BackgroundParallax"]
+z_index = 1
+position = Vector2(2607, -450)
+scale = Vector2(0.394495, 0.522337)
+texture = ExtResource("3_s682e")
+
+[node name="Clouds2" type="Sprite2D" parent="BackgroundParallax"]
+z_index = 1
+position = Vector2(1196, -750)
+texture = ExtResource("3_s682e")
+
+[node name="Clouds3" type="Sprite2D" parent="BackgroundParallax"]
+z_index = 1
+position = Vector2(2860, -711)
+scale = Vector2(0.291284, 0.345361)
+texture = ExtResource("3_s682e")
+
+[node name="Clouds4" type="Sprite2D" parent="BackgroundParallax"]
+z_index = 1
+position = Vector2(1854, -546)
+scale = Vector2(0.147935, 0.229381)
+texture = ExtResource("3_s682e")
+
 [node name="WallCollisions" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="MainWallCollision" type="StaticBody2D" parent="WallCollisions" groups=["StopsBurst"]]
 position = Vector2(0, -530)
+metadata/_edit_lock_ = true
 
 [node name="WallCollider00" type="CollisionShape2D" parent="WallCollisions/MainWallCollision" groups=["StopsBurst"]]
-position = Vector2(4124.5, -104)
+position = Vector2(13645.5, -104)
 shape = SubResource("RectangleShape2D_iv4qu")
-
-[node name="WallCollider02" type="CollisionShape2D" parent="WallCollisions/MainWallCollision" groups=["StopsBurst"]]
-position = Vector2(4124.5, 1351)
-shape = SubResource("RectangleShape2D_s682e")
+metadata/_edit_lock_ = true
 
 [node name="WallCollider01" type="CollisionShape2D" parent="WallCollisions/MainWallCollision" groups=["StopsBurst"]]
 position = Vector2(-1087.5, 522.5)
 shape = SubResource("RectangleShape2D_u0gdv")
+metadata/_edit_lock_ = true
+
+[node name="WallCollider02" type="CollisionShape2D" parent="WallCollisions/MainWallCollision" groups=["StopsBurst"]]
+position = Vector2(13617, 1351)
+shape = SubResource("RectangleShape2D_s682e")
+metadata/_edit_lock_ = true
+
+[node name="WinCollider" type="StaticBody2D" parent="WallCollisions" groups=["WinCollision"]]
+position = Vector2(0, -530)
+
+[node name="WinCollision" type="CollisionShape2D" parent="WallCollisions/WinCollider" groups=["WinCollision"]]
+position = Vector2(28097, 658.5)
+shape = SubResource("RectangleShape2D_jpilt")
 
 [node name="Barrier" type="Sprite2D" parent="WallCollisions"]
 z_index = 1
@@ -70,17 +117,153 @@ texture = ExtResource("2_ammlu")
 flip_h = true
 flip_v = true
 
+[node name="Barrier2" type="Sprite2D" parent="WallCollisions"]
+z_index = 1
+position = Vector2(28558, -6)
+texture = ExtResource("2_ammlu")
+
 [node name="WallsAndFloor" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAACrAAAAAAAAAAAAAABWAQAAAAAAAAAAAAABAgAAAAAAAAAAAAD/////AQAAAAAAAACpAP//AQAAAAAAAABTAf//AQAAAAAAAAD9Af//AQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAACrAAAAAAAAAAAAAABWAQAAAAAAAAAAAAABAgAAAAAAAAAAAAD/////AQAAAAAAAACpAP//AQAAAAAAAABTAf//AQAAAAAAAAD9Af//AQAAAAAAAACsAgAAAAAAAAAAAABXAwAAAAAAAAAAAAACBAAAAAAAAAAAAACtBAAAAAAAAAAAAABYBQAAAAAAAAAAAAACBgAAAAAAAAAAAACtBgAAAAAAAAAAAACnAv//AQAAAAAAAABRA///AQAAAAAAAAD7A///AQAAAAAAAAClBP//AQAAAAAAAABPBf//AQAAAAAAAAD3Bf//AQAAAAAAAAChBv//AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_xx8ce")
 
-[node name="Player" parent="." instance=ExtResource("2_57raj")]
+[node name="Player" parent="." node_paths=PackedStringArray("game") instance=ExtResource("2_57raj")]
 unique_name_in_owner = true
+position = Vector2(8, 7)
 floor_block_on_wall = false
 platform_wall_layers = 1
+maxHealth = 419.0
+burstMaxDuration = 3.0
 burstRechargeSpd = 0.68
-metadata/_edit_lock_ = true
+game = NodePath("..")
 
-[node name="EnemyUgandaKnuckles" parent="." instance=ExtResource("5_je4ep")]
-position = Vector2(1908, 206)
-maxHealth = 130.0
+[node name="Camera" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+position_smoothing_speed = 7.5
+drag_left_margin = 0.3
+drag_top_margin = 0.3
+drag_right_margin = 0.3
+drag_bottom_margin = 0.3
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Enemies" type="Node2D" parent="."]
+position = Vector2(-3, 6)
+
+[node name="EnemyUgandaKnuckles" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(1905, 212)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles2" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(4649, 52)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles3" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(5106, 316)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles4" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(7430, 15)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles5" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(7743, 183)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles6" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(7434, 439)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles7" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(10491, 102)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles8" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(11397, 254)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles9" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(12379, 470)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles10" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(13048, 165)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles11" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(12299, 97)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles12" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(10805, 458)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles13" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(16806, 458)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles14" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(17967, 458)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles15" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(19053, 443)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles16" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(18646, 81)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles17" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(17380, 81)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles18" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(20426, 81)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles19" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(20921, 342)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles20" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(21805, 294)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles21" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(22696, 513)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles22" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(23388, 225)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles23" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(23388, 225)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles24" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(25273, 204)
+maxHealth = 50.0
+
+[node name="EnemyUgandaKnuckles25" parent="Enemies" instance=ExtResource("5_je4ep")]
+position = Vector2(26576, 417)
+maxHealth = 50.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fading" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
