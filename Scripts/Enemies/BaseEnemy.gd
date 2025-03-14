@@ -19,18 +19,6 @@ var isAiActivated : bool # is the AI activated? doesn't have to do with anything
 var disableAi : bool # a separate thing that disables the AI for different reasons
 
 var player : CharacterBody2D # used to access player properties
-
-
-func TakeDamage(damage : float, collisionVelocity : Vector2): # collisionVelocity is for knocking the enemy back
-	if(stunTimer.wait_time == 0): # enemy is only able to be damaged if not stunned
-		print("stun timer > 0")
-		currentHealth -= damage * damageResistance
-		if(currentHealth <= 0):
-			Die()
-		else:
-			apply_force(collisionVelocity * Vector2(knockbackResistance, knockbackResistance))
-			stunTimer.wait_time = stunDuration
-			stunTimer.start()
 			
 		
 		

@@ -31,12 +31,13 @@ var isRushing : bool = false
 func _ready() -> void:
 	player = %Player
 	currentHealth = maxHealth
+	stunTimer.wait_time = stunDuration
 	stunTimer.start()
+	
 
 func _physics_process(delta: float) -> void:
 	if ActivationRangeNode() == true:
 		BehaviorTree(delta)
-	print(stunTimer.wait_time)
 
 
 # determines if the AI is activated via range
@@ -50,17 +51,23 @@ func ActivationRangeNode() -> bool:
 	
 	return isAiActivated
 	
-	
+
+var forcesAlreadyReset : bool = false
 # main behavior tree that manages all AI for this enemy
 func BehaviorTree(delta : float) -> void:
-	if (disableAi == false):
+	if (stunTimer.time_left <= 0):
 		if WaitNode(delta) == BehaviorTreeNode.SUCCESS: #rush if success
-			ActivateHurtbox()
+			
+			if(forcesAlreadyReset == false):
+				linear_velocity = Vector2.ZERO
+				forcesAlreadyReset = true
+			
 			if RushNode(delta) == BehaviorTreeNode.SUCCESS:
 				isRushing = false
 				waitTimer = 0
 				rushTimer = 0
 				rushVelocityAlreadySet = false
+				forcesAlreadyReset = false
 				await get_tree().create_timer(.15).timeout
 				DeactivateHurtbox()
 			
@@ -97,6 +104,18 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 		else:
 			DealDamage(damage * player.burstDamageResistance)
 		
+
+func TakeDamage(damage : float, collisionVelocity : Vector2): # collisionVelocity is for knocking the enemy back
+	if(stunTimer.time_left <= 0 and isRushing == false): # enemy is only able to be damaged if not stunned and is not rushing
+		currentHealth -= damage * damageResistance
+		if(currentHealth <= 0):
+			Die()
+		else:
+			print("applied force: ", collisionVelocity * Vector2(knockbackResistance, knockbackResistance))
+			apply_force(collisionVelocity * Vector2(knockbackResistance, knockbackResistance))
+			disableAi = true
+			stunTimer.start()
+
 
 func DealDamage(damageToDeal : float):
 	player.SubtractHP(damageToDeal)

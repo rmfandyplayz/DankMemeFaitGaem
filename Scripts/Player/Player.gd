@@ -123,7 +123,7 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	if(isEnemy == true):
 		if(burstActive == true):
-			print("take damage: ", damage, " ", velocity)
+			print("collided with enemy")
 			body.TakeDamage(damage, velocity)
 			EndBurst()
 			

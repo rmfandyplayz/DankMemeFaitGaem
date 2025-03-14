@@ -127,7 +127,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0aity"]
-size = Vector2(67, 169)
+size = Vector2(81, 169)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("healthBar", "healthText", "playerSprite", "walkingSFX", "speedLines", "burstBar", "burstFlame", "collisionDetector")]
 script = ExtResource("1_mkxkn")
