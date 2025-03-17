@@ -204,7 +204,7 @@ func EndBurst():
 	
 	#keep the burst music where it was so it can be picked off where it left off later
 	if(is_instance_valid(burstMusic)):
-		burstMusicTimestamp = await AudioSystem.StopAudio(burstMusic, true, 0.2)
+		burstMusicTimestamp = await AudioSystem.StopAudio(burstMusic, true, 0.1)
 	burstResistanceActive = false
 
 

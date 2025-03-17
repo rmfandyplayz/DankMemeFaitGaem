@@ -4,5 +4,5 @@ res://Shaders/SpeedLines.tres
 res://Scenes/Entities/Player.tscn
 res://Scenes/Entities/Enemy_UgandaKnuckles.tscn
 res://Scripts/Player/Player.gd
-res://Scripts/Enemies/Enemy_UgandaKnuckles.gd
 res://Scripts/LevelSpecific/TutorialLevel.gd
+res://Scripts/Audio System/AudioSystem.gd
