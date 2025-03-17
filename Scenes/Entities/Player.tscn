@@ -30,8 +30,9 @@
 [ext_resource type="FontFile" uid="uid://7nvftafso3jy" path="res://Media/Fonts/Comic Sans/ComicSansMS-BoldItalic.ttf" id="28_abqr1"]
 [ext_resource type="FontFile" uid="uid://dhkcjmpqgiovf" path="res://Media/Fonts/Comic Sans/ComicSansMS-Bold.ttf" id="29_rbvjg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fq4iy"]
-size = Vector2(54, 157)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xggc7"]
+radius = 38.0
+height = 179.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rebbf"]
 animations = [{
@@ -126,8 +127,9 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0aity"]
-size = Vector2(93, 197)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rhvgf"]
+radius = 56.5
+height = 211.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("healthBar", "healthText", "playerSprite", "walkingSFX", "speedLines", "burstBar", "burstFlame", "collisionDetector") groups=["Player"]]
 script = ExtResource("1_mkxkn")
@@ -153,7 +155,7 @@ collisionDetector = NodePath("HitboxHurtbox")
 
 [node name="MainCollider" type="CollisionShape2D" parent="."]
 position = Vector2(-12, 0.5)
-shape = SubResource("RectangleShape2D_fq4iy")
+shape = SubResource("CapsuleShape2D_xggc7")
 debug_color = Color(0.166667, 0, 1, 0.631373)
 
 [node name="CameraDependentControls" type="Control" parent="."]
@@ -198,7 +200,7 @@ animation = &"idle"
 
 [node name="DetectorCollider" type="CollisionShape2D" parent="HitboxHurtbox"]
 position = Vector2(-11.5, 0.5)
-shape = SubResource("RectangleShape2D_0aity")
+shape = SubResource("CapsuleShape2D_rhvgf")
 debug_color = Color(0.757167, 0.77, 0, 0.470588)
 
 [node name="SFX" type="Node2D" parent="."]
